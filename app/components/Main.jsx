@@ -1,5 +1,8 @@
 import React from 'react';
 
+// CityView
+import CityView from 'CityView';
+
 export class Main extends React.Component {
   render () {
     return (
@@ -9,8 +12,8 @@ export class Main extends React.Component {
         </nav>
         <div className="container-fluid">
           <div className="row">
-            <div className="col-sm">City View</div>
-            <div className="col-sm">Player View</div>
+              <CityView />
+              <div>Player View</div>
           </div>
         </div>
       </div>
