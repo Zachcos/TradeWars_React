@@ -1,7 +1,6 @@
 import React from 'react';
-
-// CityView
 import CityView from 'CityView';
+import PlayerView from 'PlayerView';
 
 export class Main extends React.Component {
   render () {
@@ -13,7 +12,7 @@ export class Main extends React.Component {
         <div className="container-fluid">
           <div className="row">
               <CityView />
-              <div>Player View</div>
+              <PlayerView />
           </div>
         </div>
       </div>
