@@ -3,7 +3,7 @@ import React from 'react';
 export class PlayerView extends React.Component {
   render() {
     return (
-      <div className="col-sm-4 offset-sm-1">
+      <div className="col-sm">
         <h1>This is PlayerView</h1>
       </div>
     )

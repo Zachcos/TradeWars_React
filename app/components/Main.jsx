@@ -11,8 +11,8 @@ export class Main extends React.Component {
         </nav>
         <div className="container-fluid">
           <div className="row">
-              <CityView />
-              <PlayerView />
+            <CityView />
+            <PlayerView />
           </div>
         </div>
       </div>
