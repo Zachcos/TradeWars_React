@@ -1,10 +1,8 @@
 import React from 'react';
 import Product from 'Product';
 
-export class ProductList extends React.Component {
-  render() {
-    return <Product />
-  }
+export const ProductList = ({ products }) => {
+  return <Product />
 }
 
 export default ProductList;
