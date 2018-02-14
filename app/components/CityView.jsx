@@ -1,4 +1,5 @@
 import React from 'react';
+import Product from 'Product';
 
 export class CityView extends React.Component {
   render() {
@@ -76,6 +77,7 @@ export class CityView extends React.Component {
             <button type="button" className="btn btn-success mr-2">Buy Parts</button>
             <button type="button" className="btn btn-danger">Sell Parts</button>
           </div>
+          <Product />
         </div>
       
     )
