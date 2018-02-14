@@ -2,6 +2,27 @@ import React from 'react';
 import ProductList from 'ProductList';
 
 export class CityView extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      products: [
+        {
+          name: 'CPUs',
+          price: 100
+        },
+        {
+          name: 'GPUs',
+          price: 200
+        },
+        {
+          name: 'HHDs',
+          price: 300
+        },
+      ]
+    }
+  }
+  
   render() {
     return (
         <div className="col-sm">
