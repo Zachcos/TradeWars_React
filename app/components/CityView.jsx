@@ -1,5 +1,5 @@
 import React from 'react';
-import Product from 'Product';
+import ProductList from 'ProductList';
 
 export class CityView extends React.Component {
   render() {
@@ -7,7 +7,7 @@ export class CityView extends React.Component {
         <div className="col-sm">
           <h1 className="text-center mt-5 mb-5">Portland</h1>
           <div className="col-sm-8 offset-sm-2">
-            <Product />
+            <ProductList />
           </div>
           <div className="col-sm text-center mt-5">
             <button type="button" className="btn btn-success mr-2">Buy Parts</button>
