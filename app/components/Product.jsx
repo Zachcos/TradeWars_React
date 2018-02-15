@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Product = ({ product, handleChange }) => {
+const Product = ({ product, handleChange, handleTransaction }) => {
   return (
     <div className="input-group input-group-md mb-3">
       <div className="input-group-prepend">
@@ -10,8 +10,8 @@ const Product = ({ product, handleChange }) => {
       <input type="text" className="form-control" onChange={handleChange} {...product}/>
       <div className="input-group-append">
         <button className="btn btn-outline-secondary" type="button">Max.</button>
-        <button className="btn btn-success" type="button">Buy</button>
-        <button className="btn btn-danger" type="button">Sell</button>
+        <button className="btn btn-success" type="button" onClick={handleTransaction}>Buy</button>
+        <button className="btn btn-danger" type="button" onClick={handleTransaction}>Sell</button>
 
       </div>
     </div>

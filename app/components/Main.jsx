@@ -33,6 +33,7 @@ export class Main extends React.Component {
     }
 
     this.handleChange = this.handleChange.bind(this);
+    this.handleTransaction = this.handleTransaction.bind(this);
   }
 
   handleChange(e) {
@@ -41,8 +42,16 @@ export class Main extends React.Component {
 
     if (e.target.value == '' || re.test(e.target.value)) {
       var totalPrice = (e.target.value * currentPrice)
-      // this.setState({testValue: e.target.value})
+      this.setState({testValue: totalPrice})
    }
+  }
+
+  handleTransaction(e) {
+    if (e.target.innerHTML == "Buy") {
+      console.log('we bought some shit')
+    } else if (e.target.innerHTML == "Sell") {
+      console.log('we sold some shit')
+    }
   }
 
   render () {
@@ -57,6 +66,7 @@ export class Main extends React.Component {
               currentPlayer={this.state.currentPlayer}
               products={this.state.products}
               handleChange={this.handleChange}
+              handleTransaction={this.handleTransaction}
             />
             <PlayerView currentPlayer={this.state.currentPlayer} />
           </div>
