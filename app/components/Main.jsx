@@ -32,18 +32,7 @@ export class Main extends React.Component {
       testValue: ''
     }
 
-    this.handleChange = this.handleChange.bind(this);
     this.handleTransaction = this.handleTransaction.bind(this);
-  }
-
-  handleChange(e) {
-    const re = /^[0-9\b]+$/;
-    var currentPrice = e.target.getAttribute('price');
-
-    if (e.target.value == '' || re.test(e.target.value)) {
-      var totalPrice = (e.target.value * currentPrice)
-      this.setState({testValue: totalPrice})
-   }
   }
 
   handleTransaction(e) {
@@ -65,7 +54,6 @@ export class Main extends React.Component {
             <CityView
               currentPlayer={this.state.currentPlayer}
               products={this.state.products}
-              handleChange={this.handleChange}
               handleTransaction={this.handleTransaction}
             />
             <PlayerView currentPlayer={this.state.currentPlayer} />
