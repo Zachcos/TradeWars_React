@@ -12,7 +12,8 @@ export class Main extends React.Component {
         funds: 1000,
         health: 100,
         att: 10,
-        def: 10
+        def: 10,
+        stash: []
       },
       products: [
         {
