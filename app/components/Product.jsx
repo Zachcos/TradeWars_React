@@ -9,7 +9,7 @@ const Product = ({ product }) => {
       </div>
       <input type="text" className="form-control" />
       <div className="input-group-append">
-        <button class="btn btn-outline-secondary" type="button">Max Amount</button>
+        <button className="btn btn-outline-secondary" type="button">Max Amount</button>
       </div>
     </div>
   )
