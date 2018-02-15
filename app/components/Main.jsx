@@ -28,8 +28,19 @@ export class Main extends React.Component {
           name: 'HHDs',
           price: 300
         },
-      ]
+      ],
+      testValue: ''
     }
+
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(e) {
+    const re = /^[0-9\b]+$/;
+    
+    if (e.target.value == '' || re.test(e.target.value)) {
+      this.setState({testValue: e.target.value})
+   }
   }
 
   render () {
@@ -40,7 +51,11 @@ export class Main extends React.Component {
         </nav>
         <div className="container-fluid">
           <div className="row">
-            <CityView currentPlayer={this.state.currentPlayer} products={this.state.products} />
+            <CityView
+              currentPlayer={this.state.currentPlayer}
+              products={this.state.products}
+              handleChange={this.handleChange}
+            />
             <PlayerView currentPlayer={this.state.currentPlayer} />
           </div>
         </div>
