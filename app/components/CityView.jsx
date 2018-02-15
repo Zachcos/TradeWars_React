@@ -9,7 +9,7 @@ const CityView = ({ currentPlayer, products }) => {
         <ProductList products={products}/>
       </div>
     </div> 
-)
+  )
 }
 
 export default CityView;
