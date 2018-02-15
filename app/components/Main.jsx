@@ -13,10 +13,24 @@ export class Main extends React.Component {
         health: 100,
         att: 10,
         def: 10
-      }
+      },
+      products: [
+        {
+          name: 'CPUs',
+          price: 100
+        },
+        {
+          name: 'GPUs',
+          price: 200
+        },
+        {
+          name: 'HHDs',
+          price: 300
+        },
+      ]
     }
   }
-  
+
   render () {
     return (
       <div>
@@ -25,7 +39,7 @@ export class Main extends React.Component {
         </nav>
         <div className="container-fluid">
           <div className="row">
-            <CityView currentPlayer={this.state.currentPlayer} />
+            <CityView currentPlayer={this.state.currentPlayer} products={this.state.products} />
             <PlayerView currentPlayer={this.state.currentPlayer} />
           </div>
         </div>
