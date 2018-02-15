@@ -1,10 +1,10 @@
 import React from 'react';
 import Product from 'Product';
 
-const ProductList = ({ products }) => {
+const ProductList = ({ products, handleChange }) => {
   const renderList = () => {
     return products.map(product => {
-      return <Product product={product} />
+      return <Product product={product} handleChange={handleChange} />
     })
   }  
   
