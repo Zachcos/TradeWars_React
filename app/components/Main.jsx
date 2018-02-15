@@ -37,9 +37,11 @@ export class Main extends React.Component {
 
   handleChange(e) {
     const re = /^[0-9\b]+$/;
-    
+    var currentPrice = e.target.getAttribute('price');
+
     if (e.target.value == '' || re.test(e.target.value)) {
-      this.setState({testValue: e.target.value})
+      var totalPrice = (e.target.value * currentPrice)
+      // this.setState({testValue: e.target.value})
    }
   }
 
