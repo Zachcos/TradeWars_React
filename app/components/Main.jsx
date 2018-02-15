@@ -9,7 +9,10 @@ export class Main extends React.Component {
     this.state = {
       currentPlayer: {
         name: "Dirk Spently",
-        funds: 1000
+        funds: 1000,
+        health: 100,
+        att: 10,
+        def: 10
       }
     }
   }
@@ -22,8 +25,8 @@ export class Main extends React.Component {
         </nav>
         <div className="container-fluid">
           <div className="row">
-            <CityView />
-            <PlayerView />
+            <CityView currentPlayer={this.state.currentPlayer} />
+            <PlayerView currentPlayer={this.state.currentPlayer} />
           </div>
         </div>
       </div>

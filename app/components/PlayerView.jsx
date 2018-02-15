@@ -2,17 +2,19 @@ import React from 'react';
 
 export class PlayerView extends React.Component {
   render() {
+    var currentPlayer = this.props.currentPlayer;
+
     return (
       <div className="col-sm">
-        <h1 className="text-center mt-5 mb-5">Dirk Spently</h1>
+        <h1 className="text-center mt-5 mb-5">{currentPlayer.name}</h1>
         <div className="row justify-content-center">
           <div className="col-sm-4">
             <h4>Player info</h4>
             <ul className="player-info list-unstyled">
-              <li>Funds: $600</li>
-              <li>Health: 100</li>
-              <li>Attack: 10</li>
-              <li>Defense: 10</li>
+              <li>Funds: ${currentPlayer.funds}</li>
+              <li>Health: {currentPlayer.health}</li>
+              <li>Attack: {currentPlayer.att}</li>
+              <li>Defense: {currentPlayer.def}</li>
             </ul>
           </div>
           <div className="col-sm-4">
