@@ -3,6 +3,17 @@ import CityView from 'CityView';
 import PlayerView from 'PlayerView';
 
 export class Main extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      currentPlayer: {
+        name: "Dirk Spently",
+        funds: 1000
+      }
+    }
+  }
+  
   render () {
     return (
       <div>
