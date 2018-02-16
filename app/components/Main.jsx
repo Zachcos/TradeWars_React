@@ -36,9 +36,9 @@ export class Main extends React.Component {
   }
 
   handleTransaction(action) {
-    if (action.transactionType == "Buy") {
+    if (action.type == "Buy") {
       console.log('we bought some shit' + action.price)
-    } else if (action.transactionType == "Sell") {
+    } else if (action.type == "Sell") {
       console.log('we sold some shit')
     }
   }

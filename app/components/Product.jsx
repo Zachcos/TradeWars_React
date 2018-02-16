@@ -26,7 +26,7 @@ export class Product extends React.Component {
   startTransaction(e) {
     const trans = e.target.innerHTML;
     const action = {
-      transactionType: trans,
+      type: trans,
       price: this.state.purchasePrice
     }
     this.props.handleTransaction(action)
