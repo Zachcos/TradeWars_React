@@ -36,8 +36,12 @@ export class Main extends React.Component {
   }
 
   handleTransaction(action) {
+    const currentPlayer = this.state.currentPlayer;
+    
     if (action.type == "Buy") {
-      console.log('we bought some shit' + action.price)
+      if (action.price > currentPlayer.funds) {
+        console.log("you can't afford that")
+      }
     } else if (action.type == "Sell") {
       console.log('we sold some shit')
     }
