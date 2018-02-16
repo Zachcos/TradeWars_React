@@ -35,10 +35,10 @@ export class Main extends React.Component {
     this.handleTransaction = this.handleTransaction.bind(this);
   }
 
-  handleTransaction(e) {
-    if (e.target.innerHTML == "Buy") {
-      console.log('we bought some shit')
-    } else if (e.target.innerHTML == "Sell") {
+  handleTransaction(action) {
+    if (action.transactionType == "Buy") {
+      console.log('we bought some shit' + action.price)
+    } else if (action.transactionType == "Sell") {
       console.log('we sold some shit')
     }
   }

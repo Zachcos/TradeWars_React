@@ -23,12 +23,17 @@ export class Product extends React.Component {
     }
   }
 
-  startTransaction() {
-    console.log(this.state.purchasePrice)
+  startTransaction(e) {
+    const trans = e.target.innerHTML;
+    const action = {
+      transactionType: trans,
+      price: this.state.purchasePrice
+    }
+    this.props.handleTransaction(action)
   }
 
   render() {
-    const { product, handleChange, handleTransaction } = this.props;
+    const { product, handleChange } = this.props;
 
     return (
       <div className="input-group input-group-md mb-3">
