@@ -4,7 +4,7 @@ import Product from 'Product';
 const ProductList = ({ products }) => {
   const renderList = () => {
     return products.map(product => {
-      return <Product product={product} />
+      return <Product product={product} key={product.name} />
     })
   }  
   
