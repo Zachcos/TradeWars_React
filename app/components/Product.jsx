@@ -6,7 +6,8 @@ export class Product extends React.Component {
 
     this.state = {
       product: this.props.product,
-      purchasePrice: ''
+      purchasePrice: '',
+      quantity: ''
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -19,7 +20,10 @@ export class Product extends React.Component {
 
     if (e.target.value == '' || re.test(e.target.value)) {
       var total = (e.target.value * product.price)
-      this.setState({purchasePrice: total})
+      this.setState({
+        purchasePrice: total,
+        quantity: e.target.value * 1
+      })
     }
   }
 
@@ -27,7 +31,8 @@ export class Product extends React.Component {
     const trans = e.target.innerHTML;
     const action = {
       type: trans,
-      price: this.state.purchasePrice
+      price: this.state.purchasePrice,
+      quantity: this.state.quantity
     }
     this.props.handleTransaction(action)
   }
