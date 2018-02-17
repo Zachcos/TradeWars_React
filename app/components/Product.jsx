@@ -28,10 +28,11 @@ export class Product extends React.Component {
   }
 
   startTransaction(e) {
-    const trans = e.target.innerHTML;
+    this.quantField.value = '';
+    const transaction = e.target.innerHTML;
     const action = {
-      type: trans,
-      name: this.state.product.name,
+      type: transaction,
+      product: this.state.product,
       price: this.state.purchasePrice,
       quantity: this.state.quantity
     }
@@ -47,7 +48,7 @@ export class Product extends React.Component {
           <span className="input-group-text" id="inputGroup-sizing-md">{product.name}</span>
           <span className="input-group-text" id="inputGroup-sizing-md">${product.price}</span>
         </div>
-        <input type="text" className="form-control" onChange={this.handleChange} {...product}/>
+        <input type="text" className="form-control" ref={(input) => { this.quantField = input }}onChange={this.handleChange} {...product}/>
         <div className="input-group-append">
           <button className="btn btn-outline-secondary" type="button">Max.</button>
           <button className="btn btn-success" type="button" onClick={this.startTransaction}>Buy</button>

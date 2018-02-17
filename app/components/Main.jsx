@@ -18,15 +18,18 @@ export class Main extends React.Component {
       products: [
         {
           name: 'CPU',
-          price: 100
+          price: 100,
+          quantityAvailable: 4
         },
         {
           name: 'GPU',
-          price: 200
+          price: 200,
+          quantityAvailable: 4
         },
         {
           name: 'HHD',
-          price: 300
+          price: 300,
+          quantityAvailable: 4
         },
       ]
     }
@@ -37,7 +40,7 @@ export class Main extends React.Component {
   handleTransaction(action) {
     const currentPlayer = this.state.currentPlayer;
     const payload = {
-      name: action.name,
+      name: action.product.name,
       quantity: action.quantity,
       price: action.price
     }
@@ -45,10 +48,13 @@ export class Main extends React.Component {
     if (action.type == "Buy") {
       if (action.price > currentPlayer.funds) {
         console.log("you can't afford that")
+      } else if (action.quantity > action.product.quantityAvailable) {
+        console.log("there aren't enough to buy")
       } else {
         this.setState ({
           currentPlayer: {
-            ...currentPlayer, 
+            ...currentPlayer,
+            funds: (currentPlayer.funds - action.price),
             stash: [...this.state.currentPlayer.stash, payload]
           }
         })
