@@ -46,7 +46,12 @@ export class Main extends React.Component {
       if (action.price > currentPlayer.funds) {
         console.log("you can't afford that")
       } else {
-        this.setState({ stash: [payload] })
+        this.setState ({
+          currentPlayer: {
+            ...currentPlayer, 
+            stash: [...this.state.currentPlayer.stash, payload]
+          }
+        })
       }
     } else if (action.type == "Sell") {
       console.log('we sold some shit')
