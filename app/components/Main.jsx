@@ -28,8 +28,7 @@ export class Main extends React.Component {
           name: 'HHDs',
           price: 300
         },
-      ],
-      testValue: ''
+      ]
     }
 
     this.handleTransaction = this.handleTransaction.bind(this);
