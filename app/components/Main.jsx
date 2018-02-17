@@ -53,7 +53,8 @@ export class Main extends React.Component {
       } else {
         this.setState ({
           currentPlayer: {
-            ...currentPlayer, 
+            ...currentPlayer,
+            funds: (currentPlayer.funds - action.price),
             stash: [...this.state.currentPlayer.stash, payload]
           }
         })
