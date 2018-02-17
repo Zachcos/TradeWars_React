@@ -36,10 +36,17 @@ export class Main extends React.Component {
 
   handleTransaction(action) {
     const currentPlayer = this.state.currentPlayer;
+    const payload = {
+      name: action.name,
+      quantity: action.quantity,
+      totalSpent: action.price
+    }
     
     if (action.type == "Buy") {
       if (action.price > currentPlayer.funds) {
         console.log("you can't afford that")
+      } else {
+        this.setState({ stash: [payload] })
       }
     } else if (action.type == "Sell") {
       console.log('we sold some shit')
