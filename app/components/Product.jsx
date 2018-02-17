@@ -31,6 +31,7 @@ export class Product extends React.Component {
     const trans = e.target.innerHTML;
     const action = {
       type: trans,
+      name: this.state.product.name,
       price: this.state.purchasePrice,
       quantity: this.state.quantity
     }
