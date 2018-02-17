@@ -17,15 +17,15 @@ export class Main extends React.Component {
       },
       products: [
         {
-          name: 'CPUs',
+          name: 'CPU',
           price: 100
         },
         {
-          name: 'GPUs',
+          name: 'GPU',
           price: 200
         },
         {
-          name: 'HHDs',
+          name: 'HHD',
           price: 300
         },
       ]
@@ -39,7 +39,7 @@ export class Main extends React.Component {
     const payload = {
       name: action.name,
       quantity: action.quantity,
-      totalSpent: action.price
+      price: action.price
     }
     
     if (action.type == "Buy") {

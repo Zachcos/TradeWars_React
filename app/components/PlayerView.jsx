@@ -1,6 +1,18 @@
 import React from 'react';
 
 const PlayerView = ({ currentPlayer }) => {
+  const renderStash = () => {
+    return currentPlayer.stash.map(item => {
+      var ppu = (item.price / item.quantity);
+
+      return (
+        <li key={item.name}>
+          {item.quantity} {item.name}s @ ${ppu}/unit
+        </li>
+      )
+    })
+  }
+  
   return (
     <div className="col-sm">
       <h1 className="text-center mt-5 mb-5">{currentPlayer.name}</h1>
@@ -17,10 +29,7 @@ const PlayerView = ({ currentPlayer }) => {
         <div className="col-sm-4">
           <h4>Stash</h4>
           <ul className="player-stash list-unstyled">
-            <li>GPUs: 12 @ $683/unit</li>
-            <li>RAM: 12 @ $123/unit</li>
-            <li>Software: 12 @ $866/unit</li>
-            <li>HHDs: 12 @ $634/unit</li>
+            {renderStash()}
           </ul>
         </div>
       </div>
