@@ -40,7 +40,7 @@ export class Main extends React.Component {
   handleTransaction(action) {
     const currentPlayer = this.state.currentPlayer;
     const payload = {
-      name: action.name,
+      name: action.product.name,
       quantity: action.quantity,
       price: action.price
     }
@@ -48,6 +48,8 @@ export class Main extends React.Component {
     if (action.type == "Buy") {
       if (action.price > currentPlayer.funds) {
         console.log("you can't afford that")
+      } else if (action.quantity > action.product.quantityAvailable) {
+        console.log("there aren't enough to buy")
       } else {
         this.setState ({
           currentPlayer: {
