@@ -42,6 +42,7 @@ export class Main extends React.Component {
 
     const payload = {
       name: action.product.name,
+      price: action.product.price,
       quantity: action.quantity,
       totalPrice: action.totalPrice
     }
@@ -80,7 +81,15 @@ export class Main extends React.Component {
         })
       }
     } else if (action.type == "Sell") {
-      console.log("this is disappointing")
+      var newArr = currentPlayer.stash.filter((item) => item.name != foundItem.name);
+      
+      this.setState({
+        currentPlayer: {
+          ...currentPlayer,
+          funds: currentPlayer.funds + (foundItem.quantity * payload.price),
+          stash: newArr
+        }
+      })
     }
   }
 

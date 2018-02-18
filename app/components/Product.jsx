@@ -12,21 +12,27 @@ export class Product extends React.Component {
   }
   
   startTransaction(e) {
-    if (this.quantField.value.length != 0) {
-      const re = /^[0-9\b]+$/;
-      if (this.quantField.value == '' || re.test(this.quantField.value)) {
-        const action = {
-          product: this.state.product,
-          type: e.target.innerHTML,
-          quantity: this.quantField.value * 1,
-          totalPrice: this.quantField.value * this.state.product.price
-        }
-
-        this.quantField.value = ''
-
-        this.props.handleTransaction(action)
-      }
+    const action = {
+      product: this.state.product,
+      type: e.target.innerHTML,
+      quantity: this.quantField.value * 1,
+      totalPrice: this.quantField.value * this.state.product.price
     }
+
+    if (e.target.innerHTML === "Buy") {
+      if (this.quantField.value.length != 0) {
+        const re = /^[0-9\b]+$/;
+        if (this.quantField.value == '' || re.test(this.quantField.value)) {
+          
+          this.quantField.value = ''
+  
+          this.props.handleTransaction(action)
+        }
+      }
+    } else if (e.target.innerHTML === "Sell") {
+      this.props.handleTransaction(action)
+    }
+    
   }
 
   render() {
