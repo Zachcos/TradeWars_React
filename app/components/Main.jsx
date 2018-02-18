@@ -81,24 +81,28 @@ export class Main extends React.Component {
         })
       }
     } else if (action.type == "Sell") {
-      var newItem ={
-        name: foundItem.name,
-        totalPrice: foundItem.totalPrice - payload.totalPrice,
-        quantity: foundItem.quantity - payload.quantity
-      }
-      
-      var newArr = currentPlayer.stash.filter((item) => item.name != foundItem.name);
-      newArr.push(newItem)
-
-      var cleanArr = newArr.filter((item) => item.quantity != 0)
-      
-      this.setState({
-        currentPlayer: {
-          ...currentPlayer,
-          funds: currentPlayer.funds + (payload.quantity * payload.price),
-          stash: cleanArr
+      if (payload.quantity > foundItem.quantity) {
+        console.log("you don't have that many to sell")
+      } else {
+        var newItem = {
+          name: foundItem.name,
+          totalPrice: foundItem.totalPrice - payload.totalPrice,
+          quantity: foundItem.quantity - payload.quantity
         }
-      })
+        
+        var newArr = currentPlayer.stash.filter((item) => item.name != foundItem.name);
+        newArr.push(newItem)
+  
+        var cleanArr = newArr.filter((item) => item.quantity != 0)
+        
+        this.setState({
+          currentPlayer: {
+            ...currentPlayer,
+            funds: currentPlayer.funds + (payload.quantity * payload.price),
+            stash: cleanArr
+          }
+        })
+      }
     }
   }
 
