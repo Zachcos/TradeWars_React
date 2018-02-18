@@ -17,17 +17,18 @@ export class Product extends React.Component {
       if (this.quantField.value == '' || re.test(this.quantField.value)) {
         const action = {
           product: this.state.product,
+          type: e.target.innerHTML,
           quantity: this.quantField.value,
           totalPrice: this.quantField.value * this.state.product.price
         }
 
-        console.log(action)
+        this.props.handleTransaction(action)
       }
     }
   }
 
   render() {
-    const { product, handleChange } = this.props;
+    const { product } = this.props;
 
     return (
       <div className="input-group input-group-md mb-3">

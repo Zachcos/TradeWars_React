@@ -3,7 +3,7 @@ import React from 'react';
 const PlayerView = ({ currentPlayer }) => {
   const renderStash = () => {
     return currentPlayer.stash.map(item => {
-      var ppu = (item.price / item.quantity);
+      var ppu = (item.totalPrice / item.quantity);
 
       return (
         <li key={item.name}>
