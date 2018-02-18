@@ -22,6 +22,8 @@ export class Product extends React.Component {
           totalPrice: this.quantField.value * this.state.product.price
         }
 
+        this.quantField.value = ''
+
         this.props.handleTransaction(action)
       }
     }
