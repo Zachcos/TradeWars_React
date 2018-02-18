@@ -39,20 +39,21 @@ export class Main extends React.Component {
 
   handleTransaction(action) {
     const currentPlayer = this.state.currentPlayer;
-    var foundItem = null;
 
     const payload = {
       name: action.product.name,
       quantity: action.quantity,
       totalPrice: action.totalPrice
     }
+
+    var foundItem = currentPlayer.stash.find((item) => item.name == payload.name);
     
     if (action.type == "Buy") {
       if (action.totalPrice > currentPlayer.funds) {
         console.log("you can't afford that")
       } else if (action.quantity > action.product.quantityAvailable) {
         console.log("there aren't enough to buy")
-      } else if (foundItem = currentPlayer.stash.find((item) => item.name == payload.name)) {
+      } else if (foundItem) {
         var newItem = {
           name: foundItem.name,
           totalPrice: foundItem.totalPrice + payload.totalPrice,
@@ -79,7 +80,7 @@ export class Main extends React.Component {
         })
       }
     } else if (action.type == "Sell") {
-      console.log('we sold some shit')
+      console.log("this is disappointing")
     }
   }
 
