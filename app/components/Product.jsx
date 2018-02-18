@@ -5,42 +5,38 @@ export class Product extends React.Component {
     super(props);
 
     this.state = {
-      product: this.props.product,
-      purchasePrice: '',
-      quantity: ''
+      product: this.props.product
     }
 
-    this.handleChange = this.handleChange.bind(this);
     this.startTransaction = this.startTransaction.bind(this);
   }
-
-  handleChange(e) {
-    const re = /^[0-9\b]+$/;
-    const product = this.state.product;
-
-    if (e.target.value == '' || re.test(e.target.value)) {
-      var total = (e.target.value * product.price)
-      this.setState({
-        purchasePrice: total,
-        quantity: e.target.value * 1
-      })
-    }
-  }
-
+  
   startTransaction(e) {
-    this.quantField.value = '';
-    const transaction = e.target.innerHTML;
     const action = {
-      type: transaction,
       product: this.state.product,
-      price: this.state.purchasePrice,
-      quantity: this.state.quantity
+      type: e.target.innerHTML,
+      quantity: this.quantField.value * 1,
+      totalPrice: this.quantField.value * this.state.product.price
     }
-    this.props.handleTransaction(action)
+
+    if (e.target.innerHTML === "Buy") {
+      if (this.quantField.value.length != 0) {
+        const re = /^[0-9\b]+$/;
+        if (this.quantField.value == '' || re.test(this.quantField.value)) {
+          
+          this.quantField.value = ''
+  
+          this.props.handleTransaction(action)
+        }
+      }
+    } else if (e.target.innerHTML === "Sell") {
+      this.props.handleTransaction(action)
+    }
+    
   }
 
   render() {
-    const { product, handleChange } = this.props;
+    const { product } = this.props;
 
     return (
       <div className="input-group input-group-md mb-3">
@@ -48,7 +44,7 @@ export class Product extends React.Component {
           <span className="input-group-text" id="inputGroup-sizing-md">{product.name}</span>
           <span className="input-group-text" id="inputGroup-sizing-md">${product.price}</span>
         </div>
-        <input type="text" className="form-control" ref={(input) => { this.quantField = input }}onChange={this.handleChange} {...product}/>
+        <input type="text" className="form-control" ref={(input) => { this.quantField = input }} {...product}/>
         <div className="input-group-append">
           <button className="btn btn-outline-secondary" type="button">Max.</button>
           <button className="btn btn-success" type="button" onClick={this.startTransaction}>Buy</button>
