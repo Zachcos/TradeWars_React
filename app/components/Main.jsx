@@ -39,6 +39,8 @@ export class Main extends React.Component {
 
   handleTransaction(action) {
     const currentPlayer = this.state.currentPlayer;
+    var foundItem = null;
+
     const payload = {
       name: action.product.name,
       quantity: action.quantity,
@@ -50,6 +52,23 @@ export class Main extends React.Component {
         console.log("you can't afford that")
       } else if (action.quantity > action.product.quantityAvailable) {
         console.log("there aren't enough to buy")
+      } else if (foundItem = currentPlayer.stash.find((item) => item.name == payload.name)) {
+        var newItem = {
+          name: foundItem.name,
+          totalPrice: foundItem.totalPrice + payload.totalPrice,
+          quantity: foundItem.quantity + payload.quantity
+        }
+
+        var newArr = currentPlayer.stash.filter((item) => item.name != payload.name)
+        newArr.push(newItem)
+        this.setState({
+          currentPlayer: {
+            ...currentPlayer,
+            funds: (currentPlayer.funds - action.totalPrice),
+            stash: newArr
+          }
+        })
+
       } else {
         this.setState ({
           currentPlayer: {

@@ -18,7 +18,7 @@ export class Product extends React.Component {
         const action = {
           product: this.state.product,
           type: e.target.innerHTML,
-          quantity: this.quantField.value,
+          quantity: this.quantField.value * 1,
           totalPrice: this.quantField.value * this.state.product.price
         }
 
