@@ -81,12 +81,19 @@ export class Main extends React.Component {
         })
       }
     } else if (action.type == "Sell") {
+      var newItem ={
+        name: foundItem.name,
+        totalPrice: foundItem.totalPrice - payload.totalPrice,
+        quantity: foundItem.quantity - payload.quantity
+      }
+      
       var newArr = currentPlayer.stash.filter((item) => item.name != foundItem.name);
+      newArr.push(newItem)
       
       this.setState({
         currentPlayer: {
           ...currentPlayer,
-          funds: currentPlayer.funds + (foundItem.quantity * payload.price),
+          funds: currentPlayer.funds + (payload.quantity * payload.price),
           stash: newArr
         }
       })

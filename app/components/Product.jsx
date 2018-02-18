@@ -19,20 +19,13 @@ export class Product extends React.Component {
       totalPrice: this.quantField.value * this.state.product.price
     }
 
-    if (e.target.innerHTML === "Buy") {
-      if (this.quantField.value.length != 0) {
-        const re = /^[0-9\b]+$/;
-        if (this.quantField.value == '' || re.test(this.quantField.value)) {
-          
-          this.quantField.value = ''
-  
-          this.props.handleTransaction(action)
-        }
+    if (this.quantField.value.length != 0) {
+      const re = /^[0-9\b]+$/;
+      if (this.quantField.value == '' || re.test(this.quantField.value)) {
+        this.quantField.value = ''
+        this.props.handleTransaction(action)
       }
-    } else if (e.target.innerHTML === "Sell") {
-      this.props.handleTransaction(action)
     }
-    
   }
 
   render() {
