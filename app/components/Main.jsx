@@ -86,7 +86,9 @@ export class Main extends React.Component {
         })
       }
     } else if (action.type == "Sell") {
-      if (payload.quantity > foundItem.quantity) {
+       if (currentPlayer.stash[index] == undefined) {
+        console.log("you don't have any of that product!")
+      } else if (payload.quantity > currentPlayer.stash[index].quantity) {
         console.log("you don't have that many to sell")
       } else {
         var newItem = {
