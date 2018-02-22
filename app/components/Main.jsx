@@ -59,7 +59,7 @@ export class Main extends React.Component {
         console.log("you can't afford that")
       } else if (action.quantity > action.product.quantityAvailable) {
         console.log("there aren't enough to buy")
-      } else if (foundItem) {
+      } else if (index != -1) {
         var newItem = {
           name: foundItem.name,
           totalPrice: foundItem.totalPrice + payload.totalPrice,
