@@ -47,6 +47,11 @@ export class Main extends React.Component {
       totalPrice: action.totalPrice
     }
 
+    var index = currentPlayer.stash.findIndex(function(item) {
+      return item.name == payload.name
+    })
+
+    console.log("index: " + index)
     var foundItem = currentPlayer.stash.find((item) => item.name == payload.name);
     
     if (action.type == "Buy") {
