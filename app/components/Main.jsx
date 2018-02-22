@@ -92,9 +92,9 @@ export class Main extends React.Component {
         console.log("you don't have that many to sell")
       } else {
         var newItem = {
-          name: foundItem.name,
-          totalPrice: foundItem.totalPrice - payload.totalPrice,
-          quantity: foundItem.quantity - payload.quantity
+          name: currentPlayer.stash[index].name,
+          totalPrice: currentPlayer.stash[index].totalPrice - payload.totalPrice,
+          quantity: currentPlayer.stash[index].quantity - payload.quantity
         }
         
         var newArr = currentPlayer.stash.filter((item) => item.name != foundItem.name);
