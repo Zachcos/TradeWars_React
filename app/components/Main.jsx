@@ -97,9 +97,9 @@ export class Main extends React.Component {
           quantity: currentPlayer.stash[index].quantity - payload.quantity
         }
         
-        var newArr = currentPlayer.stash.filter((item) => item.name != foundItem.name);
+        var newArr = currentPlayer.stash.filter((item) => item.name != currentPlayer.stash[index].name);
         newArr.push(newItem)
-  
+        
         var cleanArr = newArr.filter((item) => item.quantity != 0)
         
         this.setState({
