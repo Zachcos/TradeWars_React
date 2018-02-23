@@ -31,10 +31,17 @@ export class Main extends React.Component {
           price: 300,
           quantityAvailable: 4
         },
-      ]
+      ],
+      currentError: ''
     }
 
     this.handleTransaction = this.handleTransaction.bind(this);
+    this.callError = this.callError.bind(this);
+  }
+
+  callError(error) {
+    this.setState({ currentError: error })
+    $("#exampleModal").modal()
   }
 
   handleTransaction(action) {
@@ -54,9 +61,11 @@ export class Main extends React.Component {
     console.log("index: " + index)
     if (action.type == "Buy") {
       if (action.totalPrice > currentPlayer.funds) {
-        console.log("you can't afford that")
+        var error = "You can't afford that"
+        this.callError(error)
       } else if (action.quantity > action.product.quantityAvailable) {
-        console.log("there aren't enough to buy")
+        var error = "There aren't enough to buy"
+        this.callError(error)
       } else if (index != -1) {
         var newItem = {
           name: currentPlayer.stash[index].name,
@@ -85,9 +94,11 @@ export class Main extends React.Component {
       }
     } else if (action.type == "Sell") {
        if (currentPlayer.stash[index] == undefined) {
-        console.log("you don't have any of that product!")
+        var error = "You don't have any of that product to sell!"
+        this.callError(error)
       } else if (payload.quantity > currentPlayer.stash[index].quantity) {
-        console.log("you don't have that many to sell")
+        var error = "You don't have that many to sell"
+        this.callError(error)
       } else {
         var newItem = {
           name: currentPlayer.stash[index].name,
@@ -118,6 +129,24 @@ export class Main extends React.Component {
         <a href="#" className="navbar-brand">TradeWars</a>
         </nav>
         <div className="container-fluid">
+        <div className="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div className="modal-dialog" role="document">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title" id="exampleModalLabel">Error</h5>
+                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div className="modal-body">
+                {this.state.currentError}
+              </div>
+              <div className="modal-footer">
+                <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
           <div className="row">
             <CityView
               currentPlayer={this.state.currentPlayer}
