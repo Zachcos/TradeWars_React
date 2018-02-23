@@ -41,7 +41,7 @@ export class Main extends React.Component {
 
   callError(error) {
     this.setState({ currentError: error })
-    $("#exampleModal").modal()
+    $("#errorModal").modal()
   }
 
   handleTransaction(action) {
@@ -129,11 +129,11 @@ export class Main extends React.Component {
         <a href="#" className="navbar-brand">TradeWars</a>
         </nav>
         <div className="container-fluid">
-        <div className="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div className="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="errorModalLabel" aria-hidden="true">
           <div className="modal-dialog" role="document">
             <div className="modal-content">
               <div className="modal-header">
-                <h5 className="modal-title" id="exampleModalLabel">Error</h5>
+                <h5 className="modal-title" id="errorModalLabel">Error</h5>
                 <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
