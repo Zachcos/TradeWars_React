@@ -128,7 +128,7 @@ export class Main extends React.Component {
         <a href="#" className="navbar-brand">TradeWars</a>
         </nav>
         <div className="container-fluid">
-        <div className="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="errorModalLabel" aria-hidden="true">
+        <div className="modal fade" id="errorModal" tabIndex="-1" role="dialog" aria-labelledby="errorModalLabel" aria-hidden="true">
           <div className="modal-dialog" role="document">
             <div className="modal-content">
               <div className="modal-header">
