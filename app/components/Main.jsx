@@ -52,8 +52,6 @@ export class Main extends React.Component {
     })
 
     console.log("index: " + index)
-    var foundItem = currentPlayer.stash.find((item) => item.name == payload.name);
-    
     if (action.type == "Buy") {
       if (action.totalPrice > currentPlayer.funds) {
         console.log("you can't afford that")
