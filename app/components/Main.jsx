@@ -58,7 +58,6 @@ export class Main extends React.Component {
       return item.name == payload.name
     })
 
-    console.log("index: " + index)
     if (action.type == "Buy") {
       if (action.totalPrice > currentPlayer.funds) {
         var error = "You can't afford that"
