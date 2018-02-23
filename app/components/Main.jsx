@@ -83,12 +83,22 @@ export class Main extends React.Component {
         })
 
       } else {
+        var newProductsArr = this.state.products;
+        var foundIndex = this.state.products.findIndex(function(product) {
+          return product.name == payload.name
+        })
+        var changedProd = newProductsArr[foundIndex]
+        changedProd.quantityAvailable -= payload.quantity;
+
+        newProductsArr.splice(foundIndex, 1, changedProd);
+
         this.setState ({
           currentPlayer: {
             ...currentPlayer,
             funds: (currentPlayer.funds - action.totalPrice),
             stash: [...this.state.currentPlayer.stash, payload]
-          }
+          },
+          products: newProductsArr
         })
       }
     } else if (action.type == "Sell") {
