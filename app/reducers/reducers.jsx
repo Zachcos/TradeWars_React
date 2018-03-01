@@ -1,8 +1,10 @@
-import { combineReducers } from 'redux';
-import products from './productsReducer';
+import initialState from './initialState';
 
-const rootReducer = combineReducers({
-  products
-});
-
-export default rootReducer;
+export const productsReducer = (state = initialState.products, action) {
+  switch(action.type) {
+    case types.LOAD_PRODUCTS_SUCCESS:
+      return state;
+    default:
+      return state;
+  }
+}
