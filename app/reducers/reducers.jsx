@@ -6,3 +6,10 @@ export const productsReducer = (state = initialState.products, action) => {
       return state;
   }
 }
+
+export const playerReducer = (state = initialState.currentPlayer, action) => {
+  switch (action.type) {
+    default:
+      return state;
+  }
+}

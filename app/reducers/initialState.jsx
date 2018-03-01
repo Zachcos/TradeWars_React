@@ -18,5 +18,13 @@ export default {
       quantityAvailable: 4,
       id: 3,
     }
-  ]
+  ],
+  currentPlayer: {
+    name: "Dirk Spently",
+    funds: 10000,
+    health: 100,
+    att: 10,
+    def: 10,
+    stash: []
+  }
 }

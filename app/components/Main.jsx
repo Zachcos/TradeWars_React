@@ -11,14 +11,6 @@ export class Main extends React.Component {
     super(props);
 
     this.state = {
-      currentPlayer: {
-        name: "Dirk Spently",
-        funds: 10000,
-        health: 100,
-        att: 10,
-        def: 10,
-        stash: []
-      },
       currentError: ''
     }
 
@@ -149,7 +141,7 @@ export class Main extends React.Component {
               products={this.props.products}
               handleTransaction={this.handleTransaction}
             />
-            <PlayerView currentPlayer={this.state.currentPlayer} />
+            <PlayerView currentPlayer={this.props.currentPlayer} />
           </div>
         </div>
       </div>
@@ -159,7 +151,8 @@ export class Main extends React.Component {
 
 function mapStateToProps(state, ownProps) {
   return {
-    products: state.products
+    products: state.products,
+    currentPlayer: state.currentPlayer
   }
 }
 

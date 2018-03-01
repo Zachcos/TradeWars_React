@@ -1,10 +1,11 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux';
-import { productsReducer } from '../reducers/reducers';
+import { productsReducer, playerReducer } from '../reducers/reducers';
 import thunk from 'redux-thunk';
 
 export default function configureStore() {
   const reducer = combineReducers({
-    products: productsReducer
+    products: productsReducer,
+    currentPlayer: playerReducer
   });
   
   return createStore(
