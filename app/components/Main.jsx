@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import CityView from 'CityView';
 import PlayerView from 'PlayerView';
 
@@ -15,23 +16,6 @@ export class Main extends React.Component {
         def: 10,
         stash: []
       },
-      products: [
-        {
-          name: 'CPU',
-          price: 100,
-          quantityAvailable: 4
-        },
-        {
-          name: 'GPU',
-          price: 200,
-          quantityAvailable: 4
-        },
-        {
-          name: 'HHD',
-          price: 300,
-          quantityAvailable: 4
-        },
-      ],
       currentError: ''
     }
 
@@ -159,7 +143,7 @@ export class Main extends React.Component {
           <div className="row">
             <CityView
               currentPlayer={this.state.currentPlayer}
-              products={this.state.products}
+              products={this.props.products}
               handleTransaction={this.handleTransaction}
             />
             <PlayerView currentPlayer={this.state.currentPlayer} />
@@ -170,4 +154,10 @@ export class Main extends React.Component {
   }
 }
 
-export default Main;
+function mapStateToProps(state, ownProps) {
+  return {
+    products: state.products
+  }
+}
+
+export default connect(mapStateToProps)(Main);
