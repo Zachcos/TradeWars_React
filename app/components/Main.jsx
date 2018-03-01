@@ -151,7 +151,6 @@ export class Main extends React.Component {
             />
             <PlayerView currentPlayer={this.state.currentPlayer} />
           </div>
-          <button className="btn btn-secondary" onClick={this.testAction}>test button</button>
         </div>
       </div>
     )
