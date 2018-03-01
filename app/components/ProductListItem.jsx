@@ -12,20 +12,7 @@ export class ProductListItem extends React.Component {
   }
   
   startTransaction(e) {
-    const action = {
-      product: this.state.product,
-      type: e.target.innerHTML,
-      quantity: this.quantField.value * 1,
-      totalPrice: this.quantField.value * this.state.product.price
-    }
-
-    if (this.quantField.value.length != 0) {
-      const re = /^[0-9\b]+$/;
-      if (this.quantField.value == '' || re.test(this.quantField.value)) {
-        this.quantField.value = ''
-        this.props.handleTransaction(action)
-      }
-    }
+    console.log("we hit the buy button")
   }
 
   render() {

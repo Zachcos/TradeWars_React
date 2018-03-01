@@ -45,40 +45,9 @@ export class Main extends React.Component {
         var error = "There aren't enough to buy"
         this.callError(error)
       } else if (index != -1) {
-        var newItem = {
-          name: currentPlayer.stash[index].name,
-          totalPrice: currentPlayer.stash[index].totalPrice + payload.totalPrice,
-          quantity: currentPlayer.stash[index].quantity + payload.quantity
-        }
-
-        var newArr = currentPlayer.stash.filter((item) => item.name != payload.name)
-        newArr.push(newItem)
-        this.setState({
-          currentPlayer: {
-            ...currentPlayer,
-            funds: (currentPlayer.funds - action.totalPrice),
-            stash: newArr
-          }
-        })
-
+        console.log("we found an exisiting product")
       } else {
-        var newProductsArr = this.state.products;
-        var foundIndex = this.state.products.findIndex(function(product) {
-          return product.name == payload.name
-        })
-        var changedProd = newProductsArr[foundIndex]
-        changedProd.quantityAvailable -= payload.quantity;
-
-        newProductsArr.splice(foundIndex, 1, changedProd);
-
-        this.setState ({
-          currentPlayer: {
-            ...currentPlayer,
-            funds: (currentPlayer.funds - action.totalPrice),
-            stash: [...this.state.currentPlayer.stash, payload]
-          },
-          products: newProductsArr
-        })
+        console.log("we're going to buy stuff")
       }
     } else if (action.type == "Sell") {
        if (currentPlayer.stash[index] == undefined) {
@@ -88,24 +57,7 @@ export class Main extends React.Component {
         var error = "You don't have that many to sell"
         this.callError(error)
       } else {
-        var newItem = {
-          name: currentPlayer.stash[index].name,
-          totalPrice: currentPlayer.stash[index].totalPrice - payload.totalPrice,
-          quantity: currentPlayer.stash[index].quantity - payload.quantity
-        }
-        
-        var newArr = currentPlayer.stash.filter((item) => item.name != currentPlayer.stash[index].name);
-        newArr.push(newItem)
-        
-        var cleanArr = newArr.filter((item) => item.quantity != 0)
-        
-        this.setState({
-          currentPlayer: {
-            ...currentPlayer,
-            funds: currentPlayer.funds + (payload.quantity * payload.price),
-            stash: cleanArr
-          }
-        })
+        console.log("we're going to sell")
       }
     }
   }
@@ -137,7 +89,7 @@ export class Main extends React.Component {
         </div>
           <div className="row">
             <CityView
-              currentPlayer={this.state.currentPlayer}
+              currentPlayer={this.props.currentPlayer}
               products={this.props.products}
               handleTransaction={this.handleTransaction}
             />
