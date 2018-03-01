@@ -16,6 +16,12 @@ export class Main extends React.Component {
 
     this.handleTransaction = this.handleTransaction.bind(this);
     this.callError = this.callError.bind(this);
+
+    this.testBuy = this.testBuy.bind(this);
+  }
+
+  testBuy() {
+    console.log("this was a test buy")
   }
 
   callError(error) {
@@ -91,7 +97,7 @@ export class Main extends React.Component {
             <CityView
               currentPlayer={this.props.currentPlayer}
               products={this.props.products}
-              handleTransaction={this.handleTransaction}
+              handleTransaction={this.testBuy}
             />
             <PlayerView currentPlayer={this.props.currentPlayer} />
           </div>
