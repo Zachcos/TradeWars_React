@@ -1,6 +1,6 @@
-export const testAction = (message) => {
+export const testAction = (newProd) => {
   return {
-    type: 'UPDATE_MESSAGE',
-    message
+    type: 'ADD_PROD',
+    newProd
   }
 }

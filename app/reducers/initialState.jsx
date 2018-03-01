@@ -14,6 +14,6 @@ export default {
       name: 'HHD',
       price: 300,
       quantityAvailable: 4
-    },
+    }
   ]
 }

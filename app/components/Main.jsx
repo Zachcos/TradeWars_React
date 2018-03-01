@@ -1,7 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import CityView from 'CityView';
 import PlayerView from 'PlayerView';
+
+import * as actions from '../actions/actions';
 
 export class Main extends React.Component {
   constructor(props) {
@@ -10,7 +13,7 @@ export class Main extends React.Component {
     this.state = {
       currentPlayer: {
         name: "Dirk Spently",
-        funds: 1000,
+        funds: 10000,
         health: 100,
         att: 10,
         def: 10,
@@ -148,6 +151,7 @@ export class Main extends React.Component {
             />
             <PlayerView currentPlayer={this.state.currentPlayer} />
           </div>
+          <button className="btn btn-secondary" onClick={this.testAction}>test button</button>
         </div>
       </div>
     )
@@ -160,4 +164,10 @@ function mapStateToProps(state, ownProps) {
   }
 }
 
-export default connect(mapStateToProps)(Main);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    actions: bindActionCreators(actions, dispatch)
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Main);
