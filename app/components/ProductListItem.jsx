@@ -1,8 +1,11 @@
 import React from 'react';
 
-const ProductListItem = ({ product, handleTransaction }) => {
-  return (
-    <div className="input-group input-group-md mb-3">
+export class ProductListItem extends React.Component {
+  render() {
+    const { product, handleTransaction } = this.props;
+
+    return (
+      <div className="input-group input-group-md mb-3">
       <div className="input-group-prepend">
         <span className="input-group-text" id="inputGroup-sizing-md">{product.name}</span>
         <span className="input-group-text" id="inputGroup-sizing-md">${product.price}</span>
@@ -16,7 +19,8 @@ const ProductListItem = ({ product, handleTransaction }) => {
 
       </div>
     </div>
-  )
+    )
+  }
 }
 
 export default ProductListItem;
