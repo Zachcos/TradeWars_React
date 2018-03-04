@@ -21,7 +21,12 @@ export class Main extends React.Component {
   }
 
   testBuy() {
-    console.log("this was a test buy")
+    const update = {
+      id: 1,
+      quantity: 3
+    }
+
+    this.props.actions.testAction(update)
   }
 
   callError(error) {
