@@ -7,7 +7,7 @@ export class ProductListItem extends React.Component {
   constructor(props) {
     super(props);
 
-    this.startTransation = this.startTransation.bind(this);
+    this.startTransaction = this.startTransaction.bind(this);
   }
 
   startTransaction(event) {
