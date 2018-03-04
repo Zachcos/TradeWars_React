@@ -10,7 +10,7 @@ export class ProductListItem extends React.Component {
     this.startTransation = this.startTransation.bind(this);
   }
 
-  startTransation(event) {
+  startTransaction(event) {
     event.preventDefault();
     const type = event.target.innerHTML;
     const { product, currentPlayer } = this.props;
@@ -26,7 +26,7 @@ export class ProductListItem extends React.Component {
   }
   
   render() {
-    const { product, handleTransaction } = this.props;
+    const { product } = this.props;
 
     return (
       <div className="input-group input-group-md mb-3">
@@ -38,8 +38,8 @@ export class ProductListItem extends React.Component {
       <input type="text" className="form-control" ref={(quantField) => { this.quantField = quantField }} />
       <div className="input-group-append">
         {/* <button className="btn btn-outline-secondary" type="button">Max.</button> */}
-        <button className="btn btn-success" type="button" onClick={this.startTransation}>Buy</button>
-        <button className="btn btn-danger" type="button" onClick={handleTransaction}>Sell</button>
+        <button className="btn btn-success" type="button" onClick={this.startTransaction}>Buy</button>
+        <button className="btn btn-danger" type="button" onClick={this.startTransaction}>Sell</button>
       </div>
     </div>
     )
