@@ -1,6 +1,6 @@
-export const testAction = (update) => {
+export const purchase = (update) => {
   return {
-    type: 'SALE',
+    type: 'PURCHASE',
     update
   }
 }

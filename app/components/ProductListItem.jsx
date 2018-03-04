@@ -22,7 +22,7 @@ export class ProductListItem extends React.Component {
     }
 
     this.quantField.value = '';
-    this.props.actions.testAction(update)
+    this.props.actions.purchase(update)
   }
   
   render() {
