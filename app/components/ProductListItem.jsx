@@ -9,17 +9,19 @@ export class ProductListItem extends React.Component {
 
     this.startTransation = this.startTransation.bind(this);
   }
-  
+
   startTransation(event) {
     event.preventDefault();
-    console.log("id: " + this.props.product.id)
-    console.log("quant: " + this.quantField.value)
-    
+    const type = event.target.innerHTML;
+    const { product, currentPlayer } = this.props;
     const update = {
-      id: this.props.product.id,
-      quantity: this.quantField.value
+      id: product.id,
+      price: product.price,
+      quantity: this.quantField.value,
+      totalPrice: product.price * this.quantField.value
     }
 
+    this.quantField.value = '';
     this.props.actions.testAction(update)
   }
   
@@ -38,7 +40,6 @@ export class ProductListItem extends React.Component {
         {/* <button className="btn btn-outline-secondary" type="button">Max.</button> */}
         <button className="btn btn-success" type="button" onClick={this.startTransation}>Buy</button>
         <button className="btn btn-danger" type="button" onClick={handleTransaction}>Sell</button>
-
       </div>
     </div>
     )
