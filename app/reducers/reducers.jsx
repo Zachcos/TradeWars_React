@@ -20,6 +20,11 @@ export const productsReducer = (state = initialState.products, action) => {
 
 export const playerReducer = (state = initialState.currentPlayer, action) => {
   switch (action.type) {
+    case 'SALE':
+      return {
+        ...state,
+        funds: state.funds - action.update.totalPrice
+      };
     default:
       return state;
   }
