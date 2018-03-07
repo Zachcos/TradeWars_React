@@ -32,9 +32,20 @@ export const productsReducer = (state = initialState.products, action) => {
 export const playerReducer = (state = initialState.currentPlayer, action) => {
   switch (action.type) {
     case 'PURCHASE':
+
+    const newStashItem = {
+      id: action.update.id,
+      totalPrice: action.update.totalPrice,
+      quantity: action.update.quantity
+    }
+
       return {
         ...state,
-        funds: state.funds - action.update.totalPrice
+        funds: state.funds - action.update.totalPrice,
+        stash: [
+          ...state.stash,
+          newStashItem
+        ]
       };
       case 'SALE':
       return {
