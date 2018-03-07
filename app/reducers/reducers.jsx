@@ -35,6 +35,7 @@ export const playerReducer = (state = initialState.currentPlayer, action) => {
 
     const newStashItem = {
       id: action.update.id,
+      name: action.update.name,
       totalPrice: action.update.totalPrice,
       quantity: action.update.quantity
     }

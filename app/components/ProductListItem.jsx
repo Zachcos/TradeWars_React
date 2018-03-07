@@ -16,6 +16,7 @@ export class ProductListItem extends React.Component {
     const { product, currentPlayer } = this.props;
     const update = {
       id: product.id,
+      name: product.name,
       price: product.price,
       quantity: this.quantField.value * 1,
       totalPrice: product.price * this.quantField.value
