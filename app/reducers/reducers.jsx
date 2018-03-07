@@ -36,6 +36,11 @@ export const playerReducer = (state = initialState.currentPlayer, action) => {
         ...state,
         funds: state.funds - action.update.totalPrice
       };
+      case 'SALE':
+      return {
+        ...state,
+        funds: state.funds + action.update.totalPrice
+      };
     default:
       return state;
   }
