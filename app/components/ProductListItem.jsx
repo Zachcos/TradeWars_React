@@ -17,7 +17,7 @@ export class ProductListItem extends React.Component {
     const update = {
       id: product.id,
       price: product.price,
-      quantity: this.quantField.value,
+      quantity: this.quantField.value * 1,
       totalPrice: product.price * this.quantField.value
     }
 
@@ -25,7 +25,7 @@ export class ProductListItem extends React.Component {
     if (type === "Buy") {
       this.props.actions.purchase(update)
     } else if (type === "Sell") {
-      console.log("we're going to be selling now")
+      this.props.actions.sale(update)
     }
   }
   

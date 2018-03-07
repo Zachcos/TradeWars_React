@@ -13,7 +13,7 @@ export const productsReducer = (state = initialState.products, action) => {
         return prod
       })
       return updatedPurchase;
-    case 'SELL':
+    case 'SALE':
       const updatedSales = state.map(prod => {
         if (prod.id === action.update.id) {
           return {
