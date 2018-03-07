@@ -4,3 +4,10 @@ export const purchase = (update) => {
     update
   }
 }
+
+export const sale = (update) => {
+  return {
+    type: 'SALE',
+    update
+  }
+}

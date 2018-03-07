@@ -22,7 +22,11 @@ export class ProductListItem extends React.Component {
     }
 
     this.quantField.value = '';
-    this.props.actions.purchase(update)
+    if (type === "Buy") {
+      this.props.actions.purchase(update)
+    } else if (type === "Sell") {
+      console.log("we're going to be selling now")
+    }
   }
   
   render() {
