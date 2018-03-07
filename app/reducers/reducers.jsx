@@ -3,7 +3,7 @@ import initialState from './initialState';
 export const productsReducer = (state = initialState.products, action) => {
   switch (action.type) {
     case 'PURCHASE':
-      const updatedProds = state.map(prod => {
+      const updatedPurchase = state.map(prod => {
         if (prod.id === action.update.id) {
           return {
             ...prod,
@@ -12,7 +12,18 @@ export const productsReducer = (state = initialState.products, action) => {
         }
         return prod
       })
-      return updatedProds;
+      return updatedPurchase;
+    case 'SELL':
+      const updatedSales = state.map(prod => {
+        if (prod.id === action.update.id) {
+          return {
+            ...prod,
+            quantityAvailable: prod.quantityAvailable + action.update.quantity
+          }
+        }
+        return prod
+      })
+      return updatedSales
     default:
       return state;
   }
