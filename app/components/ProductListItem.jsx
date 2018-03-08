@@ -14,17 +14,30 @@ export class ProductListItem extends React.Component {
     event.preventDefault();
     const type = event.target.innerHTML;
     const { product, currentPlayer } = this.props;
-    const update = {
+    
+    const payload = {
       id: product.id,
       name: product.name,
-      price: product.price,
       quantity: this.quantField.value * 1,
       totalPrice: product.price * this.quantField.value
     }
 
+    const adjustedPlayer = currentPlayer;
+    adjustedPlayer.funds -= payload.totalPrice
+    adjustedPlayer.stash.push(payload)
+
+    const adjustedProduct = product;
+    adjustedProduct.quantityAvailable -= payload.quantity;
+
+    const update = {
+      id: payload.id,
+      adjustedProduct: adjustedProduct
+    }
+     
     this.quantField.value = '';
     if (type === "Buy") {
-      this.props.actions.purchase(update)
+      this.props.actions.productPurchase(update)
+      this.props.actions.playerPurchase(adjustedPlayer)
     } else if (type === "Sell") {
       this.props.actions.sale(update)
     }

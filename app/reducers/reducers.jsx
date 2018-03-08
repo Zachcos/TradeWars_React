@@ -2,13 +2,10 @@ import initialState from './initialState';
 
 export const productsReducer = (state = initialState.products, action) => {
   switch (action.type) {
-    case 'PURCHASE':
+    case 'PRODUCT_PURCHASE':
       const updatedPurchase = state.map(prod => {
         if (prod.id === action.update.id) {
-          return {
-            ...prod,
-            quantityAvailable: prod.quantityAvailable - action.update.quantity
-          }
+          return action.update.adjustedProduct
         }
         return prod
       })
@@ -31,23 +28,8 @@ export const productsReducer = (state = initialState.products, action) => {
 
 export const playerReducer = (state = initialState.currentPlayer, action) => {
   switch (action.type) {
-    case 'PURCHASE':
-
-    const newStashItem = {
-      id: action.update.id,
-      name: action.update.name,
-      totalPrice: action.update.totalPrice,
-      quantity: action.update.quantity
-    }
-
-      return {
-        ...state,
-        funds: state.funds - action.update.totalPrice,
-        stash: [
-          ...state.stash,
-          newStashItem
-        ]
-      };
+    case 'PLAYER_PURCHASE':
+      return action.adjustedPlayer;
       case 'SALE':
       return {
         ...state,
