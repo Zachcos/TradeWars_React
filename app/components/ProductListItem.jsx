@@ -42,6 +42,7 @@ export class ProductListItem extends React.Component {
       newArr.map(prod => {
         if (prod.id === payload.id) {
           prod.quantity -= payload.quantity
+          prod.totalPrice -= payload.totalPrice
         }
       })
       const cleanedArr = newArr.filter(prod => prod.quantity !== 0)
