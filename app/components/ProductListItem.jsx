@@ -13,8 +13,8 @@ export class ProductListItem extends React.Component {
   startTransaction(event) {
     event.preventDefault();
     const type = event.target.innerHTML;
-    const { product, currentPlayer } = this.props;
-    
+    const { product, currentPlayer } = this.props; 
+
     const payload = {
       id: product.id,
       name: product.name,
@@ -30,11 +30,20 @@ export class ProductListItem extends React.Component {
         console.log("you don't have enough money")
       } else {
         const adjustedPlayer = currentPlayer;
+        const foundPrev = adjustedPlayer.stash.findIndex((prod) => prod.id === payload.id)
+
         adjustedPlayer.funds -= payload.totalPrice
-        adjustedPlayer.stash.push(payload)
+        console.log("found status: " + foundPrev)
 
         const adjustedProduct = product;
         adjustedProduct.quantityAvailable -= payload.quantity;
+        
+        if (foundPrev !== -1) {
+          adjustedPlayer.stash[foundPrev].quantity += payload.quantity
+        } else if (foundPrev === -1) {
+          adjustedPlayer.stash.push(payload)
+        }
+
         this.props.actions.productPurchase(adjustedProduct)
         this.props.actions.playerPurchase(adjustedPlayer)
       }
@@ -53,7 +62,7 @@ export class ProductListItem extends React.Component {
       adjustedPlayer.stash = cleanedArr
 
       const adjustedProduct = product;
-      adjustedProduct.quantityAvailable += payload.quantity;
+      adjustedProduct.quantity += payload.quantity;
       this.props.actions.productPurchase(adjustedProduct)
       this.props.actions.playerPurchase(adjustedPlayer)
     }
