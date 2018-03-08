@@ -53,7 +53,7 @@ export class ProductListItem extends React.Component {
 
       if (foundPrev === -1) {
         console.log ("you don't own any of this product")
-      } else if (payload.quantity > product.quantityAvailable) {
+      } else if (payload.quantity > currentPlayer.stash[foundPrev].quantity) {
         console.log("you don't that many to sell")
       } else {
         adjustedPlayer.funds += payload.totalPrice
