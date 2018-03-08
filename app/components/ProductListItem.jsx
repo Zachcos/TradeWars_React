@@ -33,13 +33,13 @@ export class ProductListItem extends React.Component {
         const foundPrev = adjustedPlayer.stash.findIndex((prod) => prod.id === payload.id)
 
         adjustedPlayer.funds -= payload.totalPrice
-        console.log("found status: " + foundPrev)
 
         const adjustedProduct = product;
         adjustedProduct.quantityAvailable -= payload.quantity;
         
         if (foundPrev !== -1) {
           adjustedPlayer.stash[foundPrev].quantity += payload.quantity
+          adjustedPlayer.stash[foundPrev].totalPrice += payload.totalPrice
         } else if (foundPrev === -1) {
           adjustedPlayer.stash.push(payload)
         }
