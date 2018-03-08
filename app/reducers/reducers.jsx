@@ -4,8 +4,8 @@ export const productsReducer = (state = initialState.products, action) => {
   switch (action.type) {
     case 'PRODUCT_PURCHASE':
       const updatedPurchase = state.map(prod => {
-        if (prod.id === action.update.id) {
-          return action.update.adjustedProduct
+        if (prod.id === action.adjustedProduct.id) {
+          return action.adjustedProduct
         }
         return prod
       })

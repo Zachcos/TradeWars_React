@@ -28,15 +28,10 @@ export class ProductListItem extends React.Component {
 
     const adjustedProduct = product;
     adjustedProduct.quantityAvailable -= payload.quantity;
-
-    const update = {
-      id: payload.id,
-      adjustedProduct: adjustedProduct
-    }
      
     this.quantField.value = '';
     if (type === "Buy") {
-      this.props.actions.productPurchase(update)
+      this.props.actions.productPurchase(adjustedProduct)
       this.props.actions.playerPurchase(adjustedPlayer)
     } else if (type === "Sell") {
       this.props.actions.sale(update)

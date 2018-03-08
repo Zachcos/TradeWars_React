@@ -1,20 +1,27 @@
-export const productPurchase = (update) => {
+export const productPurchase = (adjustedProduct) => {
   return {
     type: 'PRODUCT_PURCHASE',
-    update
+    adjustedProduct
   }
 }
 
-export const playerPurchase = (update) => {
+export const playerPurchase = (adjustedPlayer) => {
   return {
     type: 'PLAYER_PURCHASE',
-    update
+    adjustedPlayer
   }
 }
 
-export const sale = (update) => {
+export const productSale = (adjustedProduct) => {
   return {
-    type: 'SALE',
-    update
+    type: 'PRODUCT_SALE',
+    adjustedProduct
+  }
+}
+
+export const playerSale = (adjustedPlayer) => {
+  return {
+    type: 'PLAYER_SALE',
+    adjustedPlayer
   }
 }
