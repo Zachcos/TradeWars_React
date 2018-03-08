@@ -49,22 +49,30 @@ export class ProductListItem extends React.Component {
       }
     } else if (type === "Sell") {
       const adjustedPlayer = currentPlayer;
-      adjustedPlayer.funds += payload.totalPrice
+      const foundPrev = adjustedPlayer.stash.findIndex((prod) => prod.id === payload.id)
 
-      const newArr = adjustedPlayer.stash;
-      newArr.map(prod => {
-        if (prod.id === payload.id) {
-          prod.quantity -= payload.quantity
-          prod.totalPrice -= payload.totalPrice
-        }
-      })
-      const cleanedArr = newArr.filter(prod => prod.quantity !== 0)
-      adjustedPlayer.stash = cleanedArr
+      if (foundPrev === -1) {
+        console.log ("you don't own any of this product")
+      } else if (payload.quantity > product.quantityAvailable) {
+        console.log("you don't that many to sell")
+      } else {
+        adjustedPlayer.funds += payload.totalPrice
 
-      const adjustedProduct = product;
-      adjustedProduct.quantityAvailable += payload.quantity;
-      this.props.actions.productTransaction(adjustedProduct)
-      this.props.actions.playerTransaction(adjustedPlayer)
+        const newArr = adjustedPlayer.stash;
+        newArr.map(prod => {
+          if (prod.id === payload.id) {
+            prod.quantity -= payload.quantity
+            prod.totalPrice -= payload.totalPrice
+          }
+        })
+        const cleanedArr = newArr.filter(prod => prod.quantity !== 0)
+        adjustedPlayer.stash = cleanedArr
+
+        const adjustedProduct = product;
+        adjustedProduct.quantityAvailable += payload.quantity;
+        this.props.actions.productTransaction(adjustedProduct)
+        this.props.actions.playerTransaction(adjustedPlayer)
+      }
     }
   }
   
