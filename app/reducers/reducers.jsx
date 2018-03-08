@@ -13,10 +13,7 @@ export const productsReducer = (state = initialState.products, action) => {
     case 'SALE':
       const updatedSales = state.map(prod => {
         if (prod.id === action.update.id) {
-          return {
-            ...prod,
-            quantityAvailable: prod.quantityAvailable + action.update.quantity
-          }
+          return adjustedProduct;
         }
         return prod
       })
@@ -31,10 +28,7 @@ export const playerReducer = (state = initialState.currentPlayer, action) => {
     case 'PLAYER_PURCHASE':
       return action.adjustedPlayer;
       case 'SALE':
-      return {
-        ...state,
-        funds: state.funds + action.update.totalPrice
-      };
+      return action.adjustedPlayer;
     default:
       return state;
   }

@@ -21,20 +21,36 @@ export class ProductListItem extends React.Component {
       quantity: this.quantField.value * 1,
       totalPrice: product.price * this.quantField.value
     }
-
-    const adjustedPlayer = currentPlayer;
-    adjustedPlayer.funds -= payload.totalPrice
-    adjustedPlayer.stash.push(payload)
-
-    const adjustedProduct = product;
-    adjustedProduct.quantityAvailable -= payload.quantity;
-     
+ 
     this.quantField.value = '';
     if (type === "Buy") {
+
+      const adjustedPlayer = currentPlayer;
+      adjustedPlayer.funds -= payload.totalPrice
+      adjustedPlayer.stash.push(payload)
+
+      const adjustedProduct = product;
+      adjustedProduct.quantityAvailable -= payload.quantity;
       this.props.actions.productPurchase(adjustedProduct)
       this.props.actions.playerPurchase(adjustedPlayer)
+
     } else if (type === "Sell") {
-      this.props.actions.sale(update)
+      const adjustedPlayer = currentPlayer;
+      adjustedPlayer.funds += payload.totalPrice
+
+      const newArr = adjustedPlayer.stash;
+      newArr.map(prod => {
+        if (prod.id === payload.id) {
+          prod.quantity -= payload.quantity
+        }
+      })
+      const cleanedArr = newArr.filter(prod => prod.quantity !== 0)
+      adjustedPlayer.stash = cleanedArr
+
+      const adjustedProduct = product;
+      adjustedProduct.quantityAvailable += payload.quantity;
+      this.props.actions.productPurchase(adjustedProduct)
+      this.props.actions.playerPurchase(adjustedPlayer)
     }
   }
   
