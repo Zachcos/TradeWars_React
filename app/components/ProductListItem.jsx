@@ -24,16 +24,20 @@ export class ProductListItem extends React.Component {
  
     this.quantField.value = '';
     if (type === "Buy") {
+      if (payload.quantity > product.quantityAvailable) {
+        console.log("there aren't enough of that product!")
+      } else if (payload.totalPrice > currentPlayer.funds) {
+        console.log("you don't have enough money")
+      } else {
+        const adjustedPlayer = currentPlayer;
+        adjustedPlayer.funds -= payload.totalPrice
+        adjustedPlayer.stash.push(payload)
 
-      const adjustedPlayer = currentPlayer;
-      adjustedPlayer.funds -= payload.totalPrice
-      adjustedPlayer.stash.push(payload)
-
-      const adjustedProduct = product;
-      adjustedProduct.quantityAvailable -= payload.quantity;
-      this.props.actions.productPurchase(adjustedProduct)
-      this.props.actions.playerPurchase(adjustedPlayer)
-
+        const adjustedProduct = product;
+        adjustedProduct.quantityAvailable -= payload.quantity;
+        this.props.actions.productPurchase(adjustedProduct)
+        this.props.actions.playerPurchase(adjustedPlayer)
+      }
     } else if (type === "Sell") {
       const adjustedPlayer = currentPlayer;
       adjustedPlayer.funds += payload.totalPrice
