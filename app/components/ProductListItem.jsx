@@ -44,8 +44,8 @@ export class ProductListItem extends React.Component {
           adjustedPlayer.stash.push(payload)
         }
 
-        this.props.actions.productPurchase(adjustedProduct)
-        this.props.actions.playerPurchase(adjustedPlayer)
+        this.props.actions.productTransaction(adjustedProduct)
+        this.props.actions.playerTransaction(adjustedPlayer)
       }
     } else if (type === "Sell") {
       const adjustedPlayer = currentPlayer;
@@ -62,9 +62,9 @@ export class ProductListItem extends React.Component {
       adjustedPlayer.stash = cleanedArr
 
       const adjustedProduct = product;
-      adjustedProduct.quantity += payload.quantity;
-      this.props.actions.productPurchase(adjustedProduct)
-      this.props.actions.playerPurchase(adjustedPlayer)
+      adjustedProduct.quantityAvailable += payload.quantity;
+      this.props.actions.productTransaction(adjustedProduct)
+      this.props.actions.playerTransaction(adjustedPlayer)
     }
   }
   

@@ -1,27 +1,13 @@
-export const productPurchase = (adjustedProduct) => {
+export const productTransaction = (adjustedProduct) => {
   return {
-    type: 'PRODUCT_PURCHASE',
+    type: 'PRODUCT_TRANSACTION',
     adjustedProduct
   }
 }
 
-export const playerPurchase = (adjustedPlayer) => {
+export const playerTransaction = (adjustedPlayer) => {
   return {
-    type: 'PLAYER_PURCHASE',
-    adjustedPlayer
-  }
-}
-
-export const productSale = (adjustedProduct) => {
-  return {
-    type: 'PRODUCT_SALE',
-    adjustedProduct
-  }
-}
-
-export const playerSale = (adjustedPlayer) => {
-  return {
-    type: 'PLAYER_SALE',
+    type: 'PLAYER_TRANSACTION',
     adjustedPlayer
   }
 }
