@@ -25,9 +25,11 @@ export class ProductListItem extends React.Component {
     this.quantField.value = '';
     if (type === "Buy") {
       if (payload.quantity > product.quantityAvailable) {
-        console.log("there aren't enough of that product!")
+        $("#modal-msg").html("There aren't enough of that product")
+        $("#errorModal").modal()
       } else if (payload.totalPrice > currentPlayer.funds) {
-        console.log("you don't have enough money")
+        $("#modal-msg").html("You don't have enough money for this purchase")
+        $("#errorModal").modal()
       } else {
         const adjustedPlayer = currentPlayer;
         const foundPrev = adjustedPlayer.stash.findIndex((prod) => prod.id === payload.id)
@@ -52,9 +54,11 @@ export class ProductListItem extends React.Component {
       const foundPrev = adjustedPlayer.stash.findIndex((prod) => prod.id === payload.id)
 
       if (foundPrev === -1) {
-        console.log ("you don't own any of this product")
+        $("#modal-msg").html("You don't own any of this product")
+        $("#errorModal").modal()
       } else if (payload.quantity > currentPlayer.stash[foundPrev].quantity) {
-        console.log("you don't that many to sell")
+        $("#modal-msg").html("You don't have that many to sell")
+        $("#errorModal").modal()
       } else {
         adjustedPlayer.funds += payload.totalPrice
 
