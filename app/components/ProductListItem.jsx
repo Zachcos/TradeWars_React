@@ -8,6 +8,12 @@ export class ProductListItem extends React.Component {
     super(props);
 
     this.startTransaction = this.startTransaction.bind(this);
+    this.callError = this.callError.bind(this);
+  }
+
+  callError(msg) {
+    $("#modal-msg").html(msg)
+    $("#errorModal").modal()
   }
 
   startTransaction(event) {
@@ -21,15 +27,13 @@ export class ProductListItem extends React.Component {
       quantity: this.quantField.value * 1,
       totalPrice: product.price * this.quantField.value
     }
- 
+
     this.quantField.value = '';
     if (type === "Buy") {
       if (payload.quantity > product.quantityAvailable) {
-        $("#modal-msg").html("There aren't enough of that product")
-        $("#errorModal").modal()
+        this.callError("There aren't enough of that product")
       } else if (payload.totalPrice > currentPlayer.funds) {
-        $("#modal-msg").html("You don't have enough money for this purchase")
-        $("#errorModal").modal()
+        this.callError("You don't have enough money for this purchase")
       } else {
         const adjustedPlayer = currentPlayer;
         const foundPrev = adjustedPlayer.stash.findIndex((prod) => prod.id === payload.id)
@@ -54,11 +58,9 @@ export class ProductListItem extends React.Component {
       const foundPrev = adjustedPlayer.stash.findIndex((prod) => prod.id === payload.id)
 
       if (foundPrev === -1) {
-        $("#modal-msg").html("You don't own any of this product")
-        $("#errorModal").modal()
+        this.callError("You don't own any of this product")
       } else if (payload.quantity > currentPlayer.stash[foundPrev].quantity) {
-        $("#modal-msg").html("You don't have that many to sell")
-        $("#errorModal").modal()
+        this.callError("You don't have that many to sell")
       } else {
         adjustedPlayer.funds += payload.totalPrice
 
