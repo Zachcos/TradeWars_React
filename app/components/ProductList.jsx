@@ -1,7 +1,7 @@
 import React from 'react';
 import ProductListItem from 'ProductListItem';
 
-const ProductList = ({ products, handleTransaction }) => {
+const ProductList = ({ products }) => {
   const renderList = () => {
     return products.map(product => {
       return <ProductListItem product={product} key={product.id} />

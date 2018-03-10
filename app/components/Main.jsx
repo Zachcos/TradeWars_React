@@ -48,10 +48,7 @@ export class Main extends React.Component {
           </div>
         </div>
           <div className="row">
-            <CityView
-              currentPlayer={this.props.currentPlayer}
-              products={this.props.products}
-            />
+            <CityView products={this.props.products} />
             <PlayerView currentPlayer={this.props.currentPlayer} />
           </div>
         </div>
