@@ -7,21 +7,6 @@ import PlayerView from 'PlayerView';
 import * as actions from '../actions/actions';
 
 export class Main extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      currentError: ''
-    }
-
-    this.callError = this.callError.bind(this);
-  }
-
-  callError(error) {
-    this.setState({ currentError: error })
-    $("#errorModal").modal()
-  }
-
   render () {
     return (
       <div>
