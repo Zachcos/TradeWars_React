@@ -19,7 +19,7 @@ export const playerTransaction = (adjustedPlayer) => {
   }
 }
 
-export const changeStateTest = () => {
+export const toggleLoading = () => {
   return {
     type: 'TOGGLE_LOADING'
   }

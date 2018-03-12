@@ -29,7 +29,7 @@ export const playerReducer = (state = initialState.currentPlayer, action) => {
 export const loadingReducer = (state = initialState.isLoading, action) => {
   switch (action.type) {
     case 'TOGGLE_LOADING':
-      return false;
+      return !state;
     default:
       return state;
   }

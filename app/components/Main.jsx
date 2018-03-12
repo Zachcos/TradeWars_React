@@ -8,7 +8,7 @@ import ProductAPI from '../api/ProductAPI';
 import * as actions from '../actions/actions';
 
 export class Main extends React.Component {
-  componentDidMount() {
+  componentWillMount() {
     const newProducts = ProductAPI.setPrices(this.props.products)
     this.props.actions.updateProducts(newProducts)
   }
