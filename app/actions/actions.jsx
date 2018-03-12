@@ -11,3 +11,9 @@ export const playerTransaction = (adjustedPlayer) => {
     adjustedPlayer
   }
 }
+
+export const changeStateTest = () => {
+  return {
+    type: 'CHANGE_STATE_TEST'
+  }
+}

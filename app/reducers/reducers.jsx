@@ -26,6 +26,8 @@ export const playerReducer = (state = initialState.currentPlayer, action) => {
 
 export const loadingReducer = (state = initialState.isLoading, action) => {
   switch (action.type) {
+    case 'CHANGE_STATE_TEST':
+      return false;
     default:
       return state;
   }

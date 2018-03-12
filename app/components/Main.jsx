@@ -7,9 +7,24 @@ import PlayerView from 'PlayerView';
 import * as actions from '../actions/actions';
 
 export class Main extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.changeStateTest = this.changeStateTest.bind(this);
+  }
+
+  changeStateTest() {
+    this.props.actions.changeStateTest()
+  }
+  
   render () {
     if (this.props.isLoading) {
-      return <h1>Holy Shit</h1>
+      return (
+        <div>
+          <h1>Holy Shit</h1>
+          <button className="btn btn-danger" onClick={this.changeStateTest}>Change to false</button>
+        </div>
+      )
     } else {
       return (
         <div>
