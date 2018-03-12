@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import CityView from 'CityView';
 import PlayerView from 'PlayerView';
+import ProductAPI from '../api/ProductAPI';
 
 import * as actions from '../actions/actions';
 
@@ -14,7 +15,8 @@ export class Main extends React.Component {
   }
 
   changeStateTest() {
-    this.props.actions.changeStateTest()
+    // this.props.actions.changeStateTest()
+    ProductAPI.setPrices(this.props.products)
   }
   
   render () {
