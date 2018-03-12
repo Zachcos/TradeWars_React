@@ -8,17 +8,6 @@ import ProductAPI from '../api/ProductAPI';
 import * as actions from '../actions/actions';
 
 export class Main extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.changeStateTest = this.changeStateTest.bind(this);
-  }
-
-  changeStateTest() {
-    // this.props.actions.changeStateTest()
-    ProductAPI.setPrices(this.props.products)
-  }
-  
   render () {
     if (this.props.isLoading) {
       return (
