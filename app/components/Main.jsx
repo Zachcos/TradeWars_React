@@ -9,46 +9,37 @@ import * as actions from '../actions/actions';
 
 export class Main extends React.Component {
   render () {
-    if (this.props.isLoading) {
-      return (
-        <div>
-          <h1>Holy Shit</h1>
-          <button className="btn btn-danger" onClick={this.changeStateTest}>Change to false</button>
-        </div>
-      )
-    } else {
-      return (
-        <div>
-          <nav id="main-nav" className="navbar navbar-expand-lg navbar-dark bg-dark">
-          <a href="#" className="navbar-brand">TradeWars</a>
-          </nav>
-          <div className="container-fluid">
-          <div className="modal fade" id="errorModal" tabIndex="-1" role="dialog" aria-labelledby="errorModalLabel" aria-hidden="true">
-            <div className="modal-dialog" role="document">
-              <div className="modal-content">
-                <div className="modal-header">
-                  <h5 className="modal-title" id="errorModalLabel">Error</h5>
-                  <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div className="modal-body">
-                  <p id="modal-msg"></p>
-                </div>
-                <div className="modal-footer">
-                  <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
+    return (
+      <div>
+        <nav id="main-nav" className="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a href="#" className="navbar-brand">TradeWars</a>
+        </nav>
+        <div className="container-fluid">
+        <div className="modal fade" id="errorModal" tabIndex="-1" role="dialog" aria-labelledby="errorModalLabel" aria-hidden="true">
+          <div className="modal-dialog" role="document">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title" id="errorModalLabel">Error</h5>
+                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div className="modal-body">
+                <p id="modal-msg"></p>
+              </div>
+              <div className="modal-footer">
+                <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
               </div>
             </div>
           </div>
-            <div className="row">
-              <CityView products={this.props.products} />
-              <PlayerView currentPlayer={this.props.currentPlayer} />
-            </div>
+        </div>
+          <div className="row">
+            <CityView products={this.props.products} />
+            <PlayerView currentPlayer={this.props.currentPlayer} />
           </div>
         </div>
-      )
-    }
+      </div>
+    )
   }
 }
 
