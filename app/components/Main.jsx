@@ -10,7 +10,7 @@ import * as actions from '../actions/actions';
 export class Main extends React.Component {
   componentDidMount() {
     const newProducts = ProductAPI.setPrices(this.props.products)
-    console.log(newProducts)
+    this.props.actions.updateProducts(newProducts)
   }
   
   render () {

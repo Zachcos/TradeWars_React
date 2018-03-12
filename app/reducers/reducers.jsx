@@ -2,6 +2,8 @@ import initialState from './initialState';
 
 export const productsReducer = (state = initialState.products, action) => {
   switch (action.type) {
+    case 'UPDATE_PRODUCTS':
+      return action.newProducts;
     case 'PRODUCT_TRANSACTION':
       const updatedPurchase = state.map(prod => {
         if (prod.id === action.adjustedProduct.id) {
