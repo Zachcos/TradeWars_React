@@ -1,9 +1,9 @@
 module.exports = {
   // Randomize price data before loading app
   setPrices: function ( products ) {
-    var newProducts = products;
-    newProducts.map(prod => {
-      console.log(prod.name)
+    products.map(prod => {
+      prod.price = Math.floor(Math.random() * prod.max_price)
     })
+    return products
   }
 }
