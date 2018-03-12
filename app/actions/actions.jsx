@@ -14,6 +14,6 @@ export const playerTransaction = (adjustedPlayer) => {
 
 export const changeStateTest = () => {
   return {
-    type: 'CHANGE_STATE_TEST'
+    type: 'TOGGLE_LOADING'
   }
 }
