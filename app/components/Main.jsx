@@ -9,7 +9,7 @@ import * as actions from '../actions/actions';
 
 export class Main extends React.Component {
   componentWillMount() {
-    const newProducts = ProductAPI.setPrices(this.props.products)
+    const newProducts = ProductAPI.randomizeData(this.props.products)
     this.props.actions.updateProducts(newProducts)
   }
   
