@@ -8,7 +8,17 @@ import ProductAPI from '../api/ProductAPI';
 import * as actions from '../actions/actions';
 
 export class Main extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.beginTravel = this.beginTravel.bind(this);
+  }
   componentWillMount() {
+    const newProducts = ProductAPI.randomizeData(this.props.products)
+    this.props.actions.updateProducts(newProducts)
+  }
+
+  beginTravel() {
     const newProducts = ProductAPI.randomizeData(this.props.products)
     this.props.actions.updateProducts(newProducts)
   }
@@ -42,6 +52,7 @@ export class Main extends React.Component {
             <CityView products={this.props.products} />
             <PlayerView currentPlayer={this.props.currentPlayer} />
           </div>
+          <button className="btn btn-debug" onClick={this.beginTravel}>Travel</button>
         </div>
       </div>
     )
