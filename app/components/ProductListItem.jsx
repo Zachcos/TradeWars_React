@@ -39,7 +39,6 @@ export class ProductListItem extends React.Component {
         const foundPrev = currentPlayer.stash.findIndex((prod) => prod.id === payload.id)
 
         const adjustedFunds = currentPlayer.funds -= payload.totalPrice
-        const nameTest = "Fart Knocker"
 
         // const adjustedProduct = product;
         // adjustedProduct.quantityAvailable -= payload.quantity;
