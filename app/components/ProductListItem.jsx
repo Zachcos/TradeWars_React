@@ -17,7 +17,7 @@ export class ProductListItem extends React.Component {
 
   startTransaction(event) {
     event.preventDefault();
-    const type = event.target.innerHTML;
+    const transactionType = event.target.innerHTML;
     const { product, currentPlayer } = this.props;
 
     const transactionData = {
@@ -29,7 +29,7 @@ export class ProductListItem extends React.Component {
     const otherData = "does this work?"
 
     this.quantField.value = '';
-    this.props.playerTransaction(transactionData, otherData)
+    this.props.playerTransaction(transactionData, transactionType)
   }
 
   // startTransaction(event) {
