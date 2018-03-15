@@ -18,26 +18,17 @@ export const productsReducer = (state = initialState.products, action) => {
 }
 
 export const playerReducer = (state = initialState.currentPlayer, action) => {
-  const stashItemIndex = state.stash.findIndex(prod => prod.id === action.transactionData.id)
-  
   switch (action.type) {
     case 'PLAYER_TRANSACTION':
     if (action.transactionType == "Buy") {
-      if (stashItemIndex === -1) {
-        return {
-          ...state,
-          funds: state.funds - action.transactionData.totalPrice,
-          stash: [
-            ...state.stash,
-            action.transactionData
-          ]
-        };
-      } else if (stashItemIndex !== -1) {
-        
-      }
-    } else {
-      return state;
-    };
+      return {
+        ...state,
+        funds: state.funds - action.transactionData.totalPrice,
+        stash: [
+          ...state.stash,
+          action.transactionData
+        ]
+      };
     default:
       return state;
   }
