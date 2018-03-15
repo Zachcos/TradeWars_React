@@ -23,7 +23,7 @@ export const playerReducer = (state = initialState.currentPlayer, action) => {
       return {
         ...state,
         stash: [
-          ...state,
+          ...state.stash,
           action.transactionData
         ]
       }
