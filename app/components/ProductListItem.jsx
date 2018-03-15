@@ -19,6 +19,15 @@ export class ProductListItem extends React.Component {
     event.preventDefault();
     const type = event.target.innerHTML;
     const { product, currentPlayer } = this.props;
+
+    const payload = {
+      id: product.id,
+      name: product.name,
+      quantity: this.quantField.value * 1,
+      totalPrice: product.price * this.quantField.value
+    }
+
+    this.quantField.value = '';
   }
 
   // startTransaction(event) {
