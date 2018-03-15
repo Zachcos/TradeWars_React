@@ -34,9 +34,7 @@ export class ProductListItem extends React.Component {
       } else if (payload.totalPrice > currentPlayer.funds) {
         this.callError("You don't have enough money for this purchase")
       } else {
-        // const adjustedPlayer = {...currentPlayer};
         const foundPrev = currentPlayer.stash.findIndex((prod) => prod.id === payload.id)
-
         const adjustedPlayerFunds = currentPlayer.funds -= payload.totalPrice
         const adjustedProductQuantity = product.quantityAvailable -= payload.quantity;
         
