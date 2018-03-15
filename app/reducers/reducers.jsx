@@ -23,6 +23,7 @@ export const playerReducer = (state = initialState.currentPlayer, action) => {
     if (action.transactionType == "Buy") {
       return {
         ...state,
+        funds: state.funds - action.transactionData.totalPrice,
         stash: [
           ...state.stash,
           action.transactionData
