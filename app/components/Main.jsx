@@ -1,11 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import CityView from 'CityView';
 import PlayerView from 'PlayerView';
 import ProductAPI from '../api/ProductAPI';
 
-import * as actions from '../actions/actions';
+import { updateProducts } from '../actions/actions';
 
 export class Main extends React.Component {
   constructor(props) {
@@ -15,12 +14,12 @@ export class Main extends React.Component {
   }
   componentWillMount() {
     const newProducts = ProductAPI.randomizeData(this.props.products)
-    this.props.actions.updateProducts(newProducts)
+    this.props.updateProducts(newProducts)
   }
 
   beginTravel() {
     const newProducts = ProductAPI.randomizeData(this.props.products)
-    this.props.actions.updateProducts(newProducts)
+    this.props.updateProducts(newProducts)
   }
   
   render () {
@@ -67,10 +66,6 @@ function mapStateToProps(state, ownProps) {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    actions: bindActionCreators(actions, dispatch)
-  }
-}
+const actions = { updateProducts }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Main);
+export default connect(mapStateToProps, actions)(Main);
