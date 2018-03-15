@@ -18,6 +18,16 @@ export const productsReducer = (state = initialState.products, action) => {
 }
 
 export const playerReducer = (state = initialState.currentPlayer, action) => {
+  function isItemMatching(state, transactionData) {
+    state.stash.find(product => {
+      if (product.id === transactionData.id) {
+        return true
+      } else {
+        return false
+      }
+    })
+  }
+  
   switch (action.type) {
     case 'PLAYER_TRANSACTION':
       if (action.transactionType == "Buy") {
@@ -43,3 +53,14 @@ export const loadingReducer = (state = initialState.isLoading, action) => {
       return state;
   }
 }
+
+// state.stash.map(prod => {
+//   if (prod.name === action.transactionData.name) {
+//     const update = {
+//       ...prod,
+//       quantity: prod.quantity + action.transactionData.quantity,
+//       totalPrice: prod.totalPrice + action.transactionData.totalPrice
+//     }
+//     console.log(update)
+//   }
+// })
