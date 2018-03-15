@@ -18,17 +18,23 @@ export const productsReducer = (state = initialState.products, action) => {
 }
 
 export const playerReducer = (state = initialState.currentPlayer, action) => {
+  const stashItemExists = state.stash.findIndex(prod => prod.id === action.transactionData.id)
+  
   switch (action.type) {
     case 'PLAYER_TRANSACTION':
     if (action.transactionType == "Buy") {
-      return {
-        ...state,
-        funds: state.funds - action.transactionData.totalPrice,
-        stash: [
-          ...state.stash,
-          action.transactionData
-        ]
-      };
+      if (stashItemExists === -1) {
+        return {
+          ...state,
+          funds: state.funds - action.transactionData.totalPrice,
+          stash: [
+            ...state.stash,
+            action.transactionData
+          ]
+        };
+      } else if (stashItemExists !== -1) {
+        console.log("we already have one of these")
+      }
     } else {
       return state;
     };
