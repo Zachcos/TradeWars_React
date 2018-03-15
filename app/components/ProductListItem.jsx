@@ -20,7 +20,7 @@ export class ProductListItem extends React.Component {
     const type = event.target.innerHTML;
     const { product, currentPlayer } = this.props;
 
-    const payload = {
+    const transactionData = {
       id: product.id,
       name: product.name,
       quantity: this.quantField.value * 1,
