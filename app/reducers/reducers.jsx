@@ -20,7 +20,13 @@ export const productsReducer = (state = initialState.products, action) => {
 export const playerReducer = (state = initialState.currentPlayer, action) => {
   switch (action.type) {
     case 'PLAYER_TRANSACTION':
-      return action.adjustedPlayer;
+      return {
+        ...state,
+        stash: [
+          ...state,
+          action.transactionData
+        ]
+      }
     default:
       return state;
   }

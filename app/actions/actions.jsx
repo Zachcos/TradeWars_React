@@ -12,10 +12,10 @@ export const productTransaction = (adjustedProduct) => {
   }
 }
 
-export const playerTransaction = (adjustedPlayer) => {
+export const playerTransaction = (transactionData) => {
   return {
     type: 'PLAYER_TRANSACTION',
-    adjustedPlayer
+    transactionData
   }
 }
 

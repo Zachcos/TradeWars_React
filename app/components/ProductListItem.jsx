@@ -26,8 +26,10 @@ export class ProductListItem extends React.Component {
       quantity: this.quantField.value * 1,
       totalPrice: product.price * this.quantField.value
     }
+    const otherData = "does this work?"
 
     this.quantField.value = '';
+    this.props.playerTransaction(transactionData, otherData)
   }
 
   // startTransaction(event) {
