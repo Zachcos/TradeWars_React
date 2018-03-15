@@ -1,7 +1,6 @@
 import React from 'react';
-import * as actions from '../actions/actions';
+import { productTransaction, playerTransaction } from '../actions/actions';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 
 export class ProductListItem extends React.Component {
   constructor(props) {
@@ -58,8 +57,8 @@ export class ProductListItem extends React.Component {
         }
 
         console.log(adjustedPlayer)
-        this.props.actions.productTransaction(adjustedProduct)
-        this.props.actions.playerTransaction(adjustedPlayer)
+        this.props.productTransaction(adjustedProduct)
+        this.props.playerTransaction(adjustedPlayer)
       }
     } else if (type === "Sell") {
       const adjustedPlayer = currentPlayer;
@@ -84,8 +83,8 @@ export class ProductListItem extends React.Component {
 
         const adjustedProduct = product;
         adjustedProduct.quantityAvailable += payload.quantity;
-        this.props.actions.productTransaction(adjustedProduct)
-        this.props.actions.playerTransaction(adjustedPlayer)
+        this.props.productTransaction(adjustedProduct)
+        this.props.playerTransaction(adjustedPlayer)
       }
     }
   }
@@ -111,10 +110,6 @@ export class ProductListItem extends React.Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    actions: bindActionCreators(actions, dispatch)
-  }
-}
+const actions = { productTransaction, playerTransaction };
 
-export default connect((state => state), mapDispatchToProps)(ProductListItem);
+export default connect((state => state), actions)(ProductListItem);
