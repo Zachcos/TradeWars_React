@@ -35,23 +35,27 @@ export class ProductListItem extends React.Component {
       } else if (payload.totalPrice > currentPlayer.funds) {
         this.callError("You don't have enough money for this purchase")
       } else {
-        const adjustedPlayer = currentPlayer;
-        const foundPrev = adjustedPlayer.stash.findIndex((prod) => prod.id === payload.id)
+        // const adjustedPlayer = {...currentPlayer};
+        const foundPrev = currentPlayer.stash.findIndex((prod) => prod.id === payload.id)
 
-        adjustedPlayer.funds -= payload.totalPrice
+        const adjustedFunds = currentPlayer.funds -= payload.totalPrice
+        const nameTest = "Fart Knocker"
 
-        const adjustedProduct = product;
-        adjustedProduct.quantityAvailable -= payload.quantity;
+        // const adjustedProduct = product;
+        // adjustedProduct.quantityAvailable -= payload.quantity;
         
-        if (foundPrev !== -1) {
-          adjustedPlayer.stash[foundPrev].quantity += payload.quantity
-          adjustedPlayer.stash[foundPrev].totalPrice += payload.totalPrice
-        } else if (foundPrev === -1) {
-          adjustedPlayer.stash.push(payload)
-        }
+        // if (foundPrev !== -1) {
+        //   adjustedPlayer.stash[foundPrev].quantity += payload.quantity
+        //   adjustedPlayer.stash[foundPrev].totalPrice += payload.totalPrice
+        // } else if (foundPrev === -1) {
+        //   adjustedPlayer.stash.push(payload)
+        // }
 
-        this.props.actions.productTransaction(adjustedProduct)
-        this.props.actions.playerTransaction(adjustedPlayer)
+        const adjustedPlayer = Object.assign({}, currentPlayer, {funds: adjustedFunds})
+
+        console.log(adjustedPlayer)
+        // this.props.actions.productTransaction(adjustedProduct)
+        // this.props.actions.playerTransaction(adjustedPlayer)
       }
     } else if (type === "Sell") {
       const adjustedPlayer = currentPlayer;
