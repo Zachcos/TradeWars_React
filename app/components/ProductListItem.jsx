@@ -39,9 +39,7 @@ export class ProductListItem extends React.Component {
         const foundPrev = currentPlayer.stash.findIndex((prod) => prod.id === payload.id)
 
         const adjustedFunds = currentPlayer.funds -= payload.totalPrice
-
-        // const adjustedProduct = product;
-        // adjustedProduct.quantityAvailable -= payload.quantity;
+        const adjustedProductQuantity = product.quantityAvailable -= payload.quantity;
         
         // if (foundPrev !== -1) {
         //   adjustedPlayer.stash[foundPrev].quantity += payload.quantity
@@ -51,10 +49,11 @@ export class ProductListItem extends React.Component {
         // }
 
         const adjustedPlayer = Object.assign({}, currentPlayer, {funds: adjustedFunds})
+        const adjustedProduct = Object.assign({}, product, {quantityAvailable: adjustedProductQuantity})
 
         console.log(adjustedPlayer)
-        // this.props.actions.productTransaction(adjustedProduct)
-        // this.props.actions.playerTransaction(adjustedPlayer)
+        this.props.actions.productTransaction(adjustedProduct)
+        this.props.actions.playerTransaction(adjustedPlayer)
       }
     } else if (type === "Sell") {
       const adjustedPlayer = currentPlayer;
