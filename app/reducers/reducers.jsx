@@ -27,6 +27,21 @@ export const playerReducer = (state = initialState.currentPlayer, action) => {
       if (action.transactionType == "Buy") {
         if (foundIndex !== -1) {
           const updatedItem = {...state.stash[foundIndex]}
+          updatedItem.quantity += action.transactionData.quantity
+          updatedItem.totalPrice += action.transactionData.totalPrice
+
+          return {
+            ...state,
+            stash: [
+              ...state.stash.map(prod => {
+                if (prod.id === updatedItem.id) {
+                  return updatedItem
+                } else {
+                  return prod
+                }
+              })
+            ]
+          }
         } else {
           return {
             ...state,
