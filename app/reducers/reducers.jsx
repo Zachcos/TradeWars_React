@@ -23,11 +23,10 @@ export const playerReducer = (state = initialState.currentPlayer, action) => {
 
   switch (action.type) {
     case 'PLAYER_TRANSACTION':
-      const foundOne = isItemMatching(state.stash, action.transactionData)
-
+      const foundIndex = isItemMatching(state.stash, action.transactionData)
       if (action.transactionType == "Buy") {
-        if (foundOne !== -1) {
-          console.log("we already have that in the stash")
+        if (foundIndex !== -1) {
+          const updatedItem = {...state.stash[foundIndex]}
         } else {
           return {
             ...state,
