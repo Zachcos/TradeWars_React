@@ -18,8 +18,8 @@ export const productsReducer = (state = initialState.products, action) => {
 }
 
 export const playerReducer = (state = initialState.currentPlayer, action) => {
-  function isItemMatching(state, transactionData) {
-    state.stash.find(product => {
+  function isItemMatching(stash, transactionData) {
+    return stash.findIndex(product => {
       if (product.id === transactionData.id) {
         return true
       } else {
@@ -27,9 +27,11 @@ export const playerReducer = (state = initialState.currentPlayer, action) => {
       }
     })
   }
-  
+
   switch (action.type) {
     case 'PLAYER_TRANSACTION':
+      const foundOne = isItemMatching(state.stash, action.transactionData)
+      console.log(foundOne)
       if (action.transactionType == "Buy") {
         return {
           ...state,
