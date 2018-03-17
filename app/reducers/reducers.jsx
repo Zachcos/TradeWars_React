@@ -53,6 +53,8 @@ export const playerReducer = (state = initialState.currentPlayer, action) => {
             ]
           };
         }
+      } else if (action.transactionType === "Sell") {
+        console.log("We're making a sale")
       }
     default:
       return state;
@@ -67,14 +69,3 @@ export const loadingReducer = (state = initialState.isLoading, action) => {
       return state;
   }
 }
-
-// state.stash.map(prod => {
-//   if (prod.name === action.transactionData.name) {
-//     const update = {
-//       ...prod,
-//       quantity: prod.quantity + action.transactionData.quantity,
-//       totalPrice: prod.totalPrice + action.transactionData.totalPrice
-//     }
-//     console.log(update)
-//   }
-// })
