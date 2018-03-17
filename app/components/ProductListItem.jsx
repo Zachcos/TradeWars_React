@@ -27,8 +27,18 @@ export class ProductListItem extends React.Component {
       totalPrice: product.price * this.quantField.value
     }
 
+    if (transactionType === "Buy") {
+      if (this.quantField.value > product.quantityAvailable) {
+        this.callError("There aren't enough of that product to buy")
+      } else if (transactionData.totalPrice > currentPlayer.funds) {
+        this.callError("You don't have enough money for that!")
+      } else {
+        this.props.playerTransaction(transactionData, transactionType)
+      }
+    } else if (transactionType === "Sell") {
+      console.log("Sale validity checks will go here")
+    }
     this.quantField.value = '';
-    this.props.playerTransaction(transactionData, transactionType)
   }
   
   render() {
