@@ -32,6 +32,7 @@ export const playerReducer = (state = initialState.currentPlayer, action) => {
 
           return {
             ...state,
+            funds: state.funds - action.transactionData.totalPrice,
             stash: [
               ...state.stash.map(prod => {
                 if (prod.id === updatedItem.id) {
