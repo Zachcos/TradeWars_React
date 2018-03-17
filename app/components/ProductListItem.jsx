@@ -37,7 +37,13 @@ export class ProductListItem extends React.Component {
       }
     } else if (transactionType === "Sell") {
       const existingProduct = currentPlayer.stash.find(prod => prod.id === transactionData.id);
-      console.log("Sale validity checks will go here")
+      if (existingProduct === undefined) {
+        this.callError("You don't have any of that product!")
+      } else if (this.quantField.value > existingProduct.quantity) {
+        this.callError("You don't have that many to sell!")
+      } else {
+        this.props.playerTransaction(transactionData, transactionType)
+      }
     }
     this.quantField.value = '';
   }
