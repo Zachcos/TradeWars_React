@@ -54,7 +54,33 @@ export const playerReducer = (state = initialState.currentPlayer, action) => {
           };
         }
       } else if (action.transactionType === "Sell") {
-        console.log("We're making a sale")
+        const updatedItem = {...state.stash[foundIndex]}
+        updatedItem.quantity -= action.transactionData.quantity
+        updatedItem.totalPrice -= action.transactionData.totalPrice
+
+        if (updatedItem.quantity === 0) {
+          return {
+            ...state,
+            funds: state.funds += action.transactionData.totalPrice,
+            stash: [
+              ...state.stash.filter(prod => prod.id !== updatedItem.id)
+            ]
+          }
+        } else {
+          return {
+            ...state,
+            funds: state.funds += action.transactionData.totalPrice,
+            stash: [
+              ...state.stash.map(prod => {
+                if (prod.id === updatedItem.id) {
+                  return updatedItem
+                } else {
+                  return prod
+                }
+              })
+            ]
+          }
+        }
       }
     default:
       return state;
