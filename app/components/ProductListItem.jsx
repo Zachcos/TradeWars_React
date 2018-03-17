@@ -36,6 +36,7 @@ export class ProductListItem extends React.Component {
         this.props.playerTransaction(transactionData, transactionType)
       }
     } else if (transactionType === "Sell") {
+      const existingProduct = currentPlayer.stash.find(prod => prod.id === transactionData.id);
       console.log("Sale validity checks will go here")
     }
     this.quantField.value = '';
