@@ -7,7 +7,11 @@ export const productsReducer = (state = initialState.products, action) => {
   
   switch (action.type) {
     case 'UPDATE_PRODUCTS':
-      return action.newProducts;
+      return [...state.map(prod => {
+        return {
+          ...prod
+        }
+      })]
     case 'PRODUCT_TRANSACTION':
       const foundIndex = isItemMatching(state, action.transactionData);
       const updatedProduct = {...state[foundIndex]};

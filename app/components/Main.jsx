@@ -11,8 +11,7 @@ export class Main extends React.Component {
     super(props);
 
     this.beginTravel = this.beginTravel.bind(this);
-  }
-  componentWillMount() {
+
     const newProducts = ProductAPI.randomizeData(this.props.products)
     this.props.updateProducts(newProducts)
   }
