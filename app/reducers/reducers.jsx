@@ -7,11 +7,7 @@ export const productsReducer = (state = initialState.products, action) => {
   
   switch (action.type) {
     case 'UPDATE_PRODUCTS':
-      return [...state.map(prod => {
-        return {
-          ...prod
-        }
-      })]
+      return action.newProducts;
     case 'PRODUCT_TRANSACTION':
       const foundIndex = isItemMatching(state, action.transactionData);
       const updatedProduct = {...state[foundIndex]};
@@ -86,7 +82,7 @@ export const playerReducer = (state = initialState.currentPlayer, action) => {
         if (updatedItem.quantity === 0) {
           return {
             ...state,
-            funds: state.funds += action.transactionData.totalPrice,
+            funds: state.funds + action.transactionData.totalPrice,
             stash: [
               ...state.stash.filter(prod => prod.id !== updatedItem.id)
             ]
