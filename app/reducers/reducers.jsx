@@ -1,17 +1,38 @@
 import initialState from './initialState';
+import { updateProducts } from '../actions/actions';
 
 export const productsReducer = (state = initialState.products, action) => {
+  function isItemMatching(products, transactionData) {
+    return products.findIndex(product => product.id === transactionData.id)}
+  
   switch (action.type) {
     case 'UPDATE_PRODUCTS':
       return action.newProducts;
     case 'PRODUCT_TRANSACTION':
-      const updatedPurchase = state.map(prod => {
-        if (prod.id === action.adjustedProduct.id) {
-          return action.adjustedProduct
+      const foundIndex = isItemMatching(state, action.transactionData);
+      const updatedProduct = {...state[foundIndex]};
+
+    if (action.transactionType === "Buy") {
+      return state.map((prod, index) => {
+        if(index !== foundIndex) {
+          return prod;
         }
-        return prod
+        return {
+          ...updatedProduct,
+          quantityAvailable: updatedProduct.quantityAvailable - action.transactionData.quantity
+        }
       })
-      return updatedPurchase;
+    } else if (action.transactionType === "Sell") {
+      return state.map((prod, index) => {
+        if(index !== foundIndex) {
+          return prod;
+        }
+        return {
+          ...updatedProduct,
+          quantityAvailable: updatedProduct.quantityAvailable + action.transactionData.quantity
+        }
+      })
+    }
     default:
       return state;
   }

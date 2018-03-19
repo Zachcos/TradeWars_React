@@ -5,10 +5,11 @@ export const updateProducts = (newProducts) => {
   }
 }
 
-export const productTransaction = (adjustedProduct) => {
+export const productTransaction = (transactionData, transactionType) => {
   return {
     type: 'PRODUCT_TRANSACTION',
-    adjustedProduct
+    transactionData,
+    transactionType
   }
 }
 
