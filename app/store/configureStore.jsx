@@ -9,10 +9,12 @@ export default function configureStore() {
     isLoading: loadingReducer
     
   });
+
+  const middleware = [require('redux-immutable-state-invariant').default(), thunk]
   
   return createStore(
     reducer,
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-    applyMiddleware(thunk)
+    applyMiddleware(...middleware)
   );
 }
