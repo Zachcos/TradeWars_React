@@ -12,7 +12,8 @@ export class ProductListItem extends React.Component {
 
   callError(msg) {
     $("#modal-msg").html(msg)
-    $("#modal").modal()
+    $("#modal-label").html("Error")
+    $("#modal").modal();
   }
 
   startTransaction(event) {
