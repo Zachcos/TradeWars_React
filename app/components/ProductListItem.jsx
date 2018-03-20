@@ -12,7 +12,7 @@ export class ProductListItem extends React.Component {
 
   callError(msg) {
     $("#modal-msg").html(msg)
-    $("#errorModal").modal()
+    $("#modal").modal()
   }
 
   startTransaction(event) {
