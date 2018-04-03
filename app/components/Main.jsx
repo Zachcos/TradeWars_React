@@ -31,7 +31,7 @@ export class Main extends React.Component {
         <div className="container-fluid">
           <Modal />
           <div className="row">
-            <CityView products={this.props.products} />
+            <CityView products={this.props.products} currentCity={this.props.currentCity} />
             <PlayerView currentPlayer={this.props.currentPlayer} />
           </div>
           <button className="btn btn-debug" onClick={this.beginTravel}>Travel</button>
@@ -45,7 +45,7 @@ function mapStateToProps(state, ownProps) {
   return {
     products: state.products,
     currentPlayer: state.currentPlayer,
-    isLoading: state.isLoading
+    currentCity: state.currentCity
   }
 }
 
