@@ -107,3 +107,10 @@ export const playerReducer = (state = initialState.currentPlayer, action) => {
       return state;
   }
 }
+
+export const travelReducer = (state = initialState.currentCity, action) => {
+  switch (action.type) {
+    default:
+      return state;
+  }
+}
