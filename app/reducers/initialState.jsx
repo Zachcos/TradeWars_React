@@ -32,6 +32,5 @@ export default {
     att: 10,
     def: 10,
     stash: []
-  },
-  isLoading: true
+  }
 }
