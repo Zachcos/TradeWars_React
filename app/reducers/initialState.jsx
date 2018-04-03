@@ -32,5 +32,6 @@ export default {
     att: 10,
     def: 10,
     stash: []
-  }
+  },
+  currentCity: 'Portland'
 }
