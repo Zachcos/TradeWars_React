@@ -90,7 +90,7 @@ export const playerReducer = (state = initialState.currentPlayer, action) => {
         } else {
           return {
             ...state,
-            funds: state.funds += action.transactionData.totalPrice,
+            funds: state.funds + action.transactionData.totalPrice,
             stash: [
               ...state.stash.map(prod => {
                 if (prod.id === updatedItem.id) {
