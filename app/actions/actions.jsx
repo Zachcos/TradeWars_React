@@ -20,3 +20,10 @@ export const playerTransaction = (transactionData, transactionType) => {
     transactionType
   }
 }
+
+export const setCity = (city) => {
+  return {
+    type: 'SET_CITY',
+    city
+  }
+}

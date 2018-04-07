@@ -6,7 +6,7 @@ import CitySelector from 'CitySelector';
 import ProductAPI from '../api/ProductAPI';
 import Modal from 'Modal';
 
-import { updateProducts } from '../actions/actions';
+import { updateProducts, setCity } from '../actions/actions';
 
 export class Main extends React.Component {
   constructor(props) {
@@ -20,8 +20,8 @@ export class Main extends React.Component {
 
   beginTravel(city) {
     const newProducts = ProductAPI.randomizeData(this.props.products)
-    this.props.updateProducts(newProducts)
-    console.log("from the beginTravel function:" + city)
+    this.props.updateProducts(newProducts);
+    this.props.setCity(city);
   }
   
   render () {
@@ -53,6 +53,6 @@ function mapStateToProps(state, ownProps) {
   }
 }
 
-const actions = { updateProducts }
+const actions = { updateProducts, setCity }
 
 export default connect(mapStateToProps, actions)(Main);
