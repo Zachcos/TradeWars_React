@@ -37,6 +37,7 @@ export class ProductListItem extends React.Component {
         this.props.playerTransaction(transactionData, transactionType)
         this.props.productTransaction(transactionData, transactionType)
       }
+      this.quantField.value = '';
     } else if (transactionType === "Sell") {
       const existingProduct = currentPlayer.stash.find(prod => prod.id === transactionData.id);
       if (existingProduct === undefined) {
@@ -47,8 +48,8 @@ export class ProductListItem extends React.Component {
         this.props.playerTransaction(transactionData, transactionType)
         this.props.productTransaction(transactionData, transactionType)
       }
+      this.quantField.value = '';
     }
-    this.quantField.value = '';
   }
   
   render() {
