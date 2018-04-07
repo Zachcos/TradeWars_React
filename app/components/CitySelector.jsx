@@ -28,7 +28,6 @@ import React from 'react';
               <label htmlFor="travelCitySelect" className="input-group-text">Location:</label>
             </div>
             <select name="travelCitySelect" id="travelCitySelect" className="custom-select" onChange={this.handleChange}>
-              <option defaultValue>Choose...</option>
               <option value="Portland">Portland</option>
               <option value="Seattle">Seattle</option>
               <option value="Denver">Denver</option>
