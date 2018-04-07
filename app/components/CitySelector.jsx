@@ -4,7 +4,8 @@ import React from 'react';
     constructor(props) {
       super(props);
       this.state = {
-        selectedCity: ''
+        selectedCity: 'Silicon Valley',
+        cities: ['Portland', 'Seattle', 'Denver', 'Austin', 'San Francisco', 'Silicon Valley', 'New York', 'Raleigh']
       }
 
       this.handleChange = this.handleChange.bind(this);
@@ -21,6 +22,13 @@ import React from 'react';
     }
 
     render() {
+      const listCities = () => {
+        const myCities = this.state.cities.filter(city => city != this.props.currentCity);
+        return myCities.map(city => {
+          return <option key={city} value={city}>{city}</option>
+        })
+      }
+
       return (
         <div className="col-sm-4 offset-sm-4">
           <div className="input-group">
@@ -28,14 +36,7 @@ import React from 'react';
               <label htmlFor="travelCitySelect" className="input-group-text">Location:</label>
             </div>
             <select name="travelCitySelect" id="travelCitySelect" className="custom-select" onChange={this.handleChange}>
-              <option value="Portland">Portland</option>
-              <option value="Seattle">Seattle</option>
-              <option value="Denver">Denver</option>
-              <option value="Austin">Austin</option>
-              <option value="San Francisco">San Francisco</option>
-              <option value="Silicon Valley">Silicon Valley</option>
-              <option value="New York">New York</option>
-              <option value="Raleigh">Raleigh</option>
+              {listCities()}
             </select>
             <div className="input-group-append">
               <button className="btn btn-primary" onClick={this.submitTravel}>Travel</button>

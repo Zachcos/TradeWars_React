@@ -37,7 +37,7 @@ export class Main extends React.Component {
             <PlayerView currentPlayer={this.props.currentPlayer} />
           </div>
           <div className="row" style={{marginTop: 50}}>
-            <CitySelector beginTravel={this.beginTravel} />
+            <CitySelector beginTravel={this.beginTravel} currentCity={this.props.currentCity} />
           </div>
         </div>
       </div>
