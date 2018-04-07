@@ -18,9 +18,10 @@ export class Main extends React.Component {
     this.props.updateProducts(newProducts)
   }
 
-  beginTravel() {
+  beginTravel(city) {
     const newProducts = ProductAPI.randomizeData(this.props.products)
     this.props.updateProducts(newProducts)
+    console.log("from the beginTravel function:" + city)
   }
   
   render () {

@@ -8,10 +8,16 @@ import React from 'react';
       }
 
       this.handleChange = this.handleChange.bind(this);
+      this.submitTravel = this.submitTravel.bind(this);
     }
 
     handleChange(event) {
       this.setState({selectedCity: event.target.value})
+    }
+
+    submitTravel(event) {
+      event.preventDefault();
+      this.props.beginTravel(this.state.selectedCity)
     }
 
     render() {
@@ -33,7 +39,7 @@ import React from 'react';
               <option value="Raleigh">Raleigh</option>
             </select>
             <div className="input-group-append">
-              <button className="btn btn-primary" onClick={this.props.beginTravel}>Travel</button>
+              <button className="btn btn-primary" onClick={this.submitTravel}>Travel</button>
             </div>
           </div>
         </div>
