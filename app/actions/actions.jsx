@@ -20,9 +20,3 @@ export const playerTransaction = (transactionData, transactionType) => {
     transactionType
   }
 }
-
-export const toggleLoading = () => {
-  return {
-    type: 'TOGGLE_LOADING'
-  }
-}
