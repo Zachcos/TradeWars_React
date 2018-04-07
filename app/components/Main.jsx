@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import CityView from 'CityView';
 import PlayerView from 'PlayerView';
+import CitySelector from 'CitySelector';
 import ProductAPI from '../api/ProductAPI';
 import Modal from 'Modal';
 
@@ -35,26 +36,7 @@ export class Main extends React.Component {
             <PlayerView currentPlayer={this.props.currentPlayer} />
           </div>
           <div className="row" style={{marginTop: 50}}>
-            <div className="col-sm-4 offset-sm-4">
-              <div className="input-group">
-                <div className="input-group-prepend">
-                  <label htmlFor="travelCitySelect" className="input-group-text">Location:</label>
-                </div>
-                <select name="travelCitySelect" id="travelCitySelect" className="custom-select">
-                  <option value="Portland">Portland</option>
-                  <option value="Seattle">Seattle</option>
-                  <option value="Denver">Denver</option>
-                  <option value="Austin">Austin</option>
-                  <option value="San Francisco">San Francisco</option>
-                  <option value="Silicon Valley">Silicon Valley</option>
-                  <option value="New York">New York</option>
-                  <option value="Raleigh">Raleigh</option>
-                </select>
-                <div className="input-group-append">
-                  <button className="btn btn-primary" onClick={this.beginTravel}>Travel</button>
-                </div>
-              </div>
-            </div>
+            <CitySelector beginTravel={this.beginTravel} />
           </div>
         </div>
       </div>
