@@ -33,6 +33,6 @@ export default {
     def: 10,
     stash: []
   },
-  currentCity: 'Silicon Valley'
+  currentCity: 'Silicon Valley',
   daysRemaining: 30
 }
