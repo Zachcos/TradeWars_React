@@ -49,8 +49,8 @@ function mapStateToProps(state, ownProps) {
   return {
     products: state.products,
     currentPlayer: state.currentPlayer,
-    currentCity: state.currentCity,
-    daysRemaining: state.daysRemaining
+    currentCity: state.gameData.currentCity,
+    daysRemaining: state.gameData.daysRemaining
   }
 }
 
