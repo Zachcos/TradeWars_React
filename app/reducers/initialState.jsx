@@ -33,6 +33,8 @@ export default {
     def: 10,
     stash: []
   },
-  currentCity: 'Silicon Valley',
-  daysRemaining: 30
+  gameData: {
+    currentCity: 'Silicon Valley',
+    daysRemaining: 30
+  }
 }

@@ -108,7 +108,7 @@ export const playerReducer = (state = initialState.currentPlayer, action) => {
   }
 }
 
-export const travelReducer = (state = initialState.currentCity, action) => {
+export const travelReducer = (state = initialState.gameData, action) => {
   switch (action.type) {
     case 'SET_CITY':
       return action.city;
@@ -117,9 +117,9 @@ export const travelReducer = (state = initialState.currentCity, action) => {
   }
 }
 
-export const daysRemainingReducer = (state = initialState.daysRemaining, action) => {
-  switch (action.type) {
-    default:
-      return state;
-  }
-}
+// export const daysRemainingReducer = (state = initialState.daysRemaining, action) => {
+//   switch (action.type) {
+//     default:
+//       return state;
+//   }
+// }
