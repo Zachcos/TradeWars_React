@@ -116,3 +116,10 @@ export const travelReducer = (state = initialState.currentCity, action) => {
       return state;
   }
 }
+
+export const daysRemainingReducer = (state = initialState.daysRemaining, action) => {
+  switch (action.type) {
+    default:
+      return state;
+  }
+}

@@ -1,12 +1,13 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux';
-import { productsReducer, playerReducer, travelReducer } from '../reducers/reducers';
+import { productsReducer, playerReducer, travelReducer, daysRemainingReducer } from '../reducers/reducers';
 import thunk from 'redux-thunk';
 
 export default function configureStore() {
   const reducer = combineReducers({
     products: productsReducer,
     currentPlayer: playerReducer,
-    currentCity: travelReducer
+    currentCity: travelReducer,
+    daysRemaining: daysRemainingReducer
   });
 
   const middleware = [require('redux-immutable-state-invariant').default(), thunk]
