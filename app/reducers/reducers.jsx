@@ -111,7 +111,10 @@ export const playerReducer = (state = initialState.currentPlayer, action) => {
 export const travelReducer = (state = initialState.gameData, action) => {
   switch (action.type) {
     case 'SET_CITY':
-      return action.city;
+      return {
+        ...state,
+        currentCity: action.city
+      }
     default:
       return state;
   }
