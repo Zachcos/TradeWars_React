@@ -34,4 +34,5 @@ export default {
     stash: []
   },
   currentCity: 'Silicon Valley'
+  daysRemaining: 30
 }
