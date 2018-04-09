@@ -15,7 +15,8 @@ const PlayerView = ({ currentPlayer }) => {
   
   return (
     <div className="col-sm">
-      <h1 className="text-center mt-5 mb-5">{currentPlayer.name}</h1>
+      <h1 className="text-center mt-5 mb-4">{currentPlayer.name}</h1>
+      <h3 className="text-center mb-5">## days remaining</h3>
       <div className="row justify-content-center">
         <div className="col-sm-4">
           <h4>Player info</h4>
