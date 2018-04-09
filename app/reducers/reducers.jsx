@@ -113,7 +113,8 @@ export const travelReducer = (state = initialState.gameData, action) => {
     case 'SET_CITY':
       return {
         ...state,
-        currentCity: action.city
+        currentCity: action.city,
+        daysRemaining: state.daysRemaining - 1
       }
     default:
       return state;
