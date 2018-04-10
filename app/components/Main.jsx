@@ -23,8 +23,16 @@ export class Main extends React.Component {
     this.props.updateProducts(newProducts);
     this.props.setCity(city);
   }
-  
+
   render () {
+    const checkDaysRemaining = () => {
+      if (this.props.daysRemaining === 0) {
+        return <h3 className="text-center mt-4">Game over</h3>
+      } else {
+        return <h3 className="text-center mt-4">{this.props.daysRemaining} days remaining</h3>
+      }
+    }
+
     return (
       <div>
         <nav id="main-nav" className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -41,7 +49,7 @@ export class Main extends React.Component {
           </div>
           <div className="row">
             <div className="col-sm-4 offset-sm-4">
-              <h3 className="text-center mt-4">{this.props.daysRemaining} days remaining</h3>
+              {checkDaysRemaining()}
             </div>
           </div>
         </div>
