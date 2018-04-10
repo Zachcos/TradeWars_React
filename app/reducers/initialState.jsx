@@ -35,6 +35,6 @@ export default {
   },
   gameData: {
     currentCity: 'Silicon Valley',
-    daysRemaining: 1
+    daysRemaining: 30
   }
 }
