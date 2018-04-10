@@ -114,7 +114,7 @@ export const playerReducer = (state = initialState.currentPlayer, action) => {
   }
 }
 
-export const travelReducer = (state = initialState.gameData, action) => {
+export const gameDataReducer = (state = initialState.gameData, action) => {
   switch (action.type) {
     case 'NEW_GAME':
       return {
