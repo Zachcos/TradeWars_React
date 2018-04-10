@@ -39,7 +39,8 @@ export class Main extends React.Component {
   render () {
     const checkDaysRemaining = () => {
       if (this.props.daysRemaining < 0) {
-        this.callModal("The game is over!")
+        const finalScore = this.props.currentPlayer.funds;
+        this.callModal(`<p>Your final score was: ${finalScore}</p>`)
         return (
           <div className="d-flex align-items-center justify-content-center">
             <h3 className="text-center mt-4 mr-5">Game over</h3>
