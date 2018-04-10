@@ -33,7 +33,7 @@ export class Main extends React.Component {
 
   render () {
     const checkDaysRemaining = () => {
-      if (this.props.daysRemaining === 0) {
+      if (this.props.daysRemaining < 0) {
         this.callModal("The game is over!")
         return <h3 className="text-center mt-4">Game over</h3>
       } else {
