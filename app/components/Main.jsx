@@ -35,7 +35,12 @@ export class Main extends React.Component {
     const checkDaysRemaining = () => {
       if (this.props.daysRemaining < 0) {
         this.callModal("The game is over!")
-        return <h3 className="text-center mt-4">Game over</h3>
+        return (
+          <div className="d-flex align-items-center justify-content-center">
+            <h3 className="text-center mt-4 mr-5">Game over</h3>
+            <button className="btn btn-success" style={{marginTop: '18px'}}>Start Over</button>
+          </div>
+        )
       } else {
         return <h3 className="text-center mt-4">{this.props.daysRemaining} days remaining</h3>
       }
