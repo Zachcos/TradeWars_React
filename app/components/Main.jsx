@@ -33,7 +33,6 @@ export class Main extends React.Component {
   }
 
   newGame() {
-    console.log("we're starting a new game")
     this.props.newGame();
   }
 
