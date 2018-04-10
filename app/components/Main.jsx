@@ -6,7 +6,7 @@ import CitySelector from 'CitySelector';
 import ProductAPI from '../api/ProductAPI';
 import Modal from 'Modal';
 
-import { updateProducts, setCity } from '../actions/actions';
+import { updateProducts, setCity, newGame } from '../actions/actions';
 
 export class Main extends React.Component {
   constructor(props) {
@@ -34,6 +34,7 @@ export class Main extends React.Component {
 
   newGame() {
     console.log("we're starting a new game")
+    this.props.newGame();
   }
 
   render () {
@@ -85,6 +86,6 @@ function mapStateToProps(state, ownProps) {
   }
 }
 
-const actions = { updateProducts, setCity }
+const actions = { updateProducts, setCity, newGame }
 
 export default connect(mapStateToProps, actions)(Main);

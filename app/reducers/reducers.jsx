@@ -43,6 +43,12 @@ export const playerReducer = (state = initialState.currentPlayer, action) => {
     return stash.findIndex(product => product.id === transactionData.id)}
 
   switch (action.type) {
+    case 'NEW_GAME':
+      return {
+        ...state,
+        funds: 10000,
+        stash: []
+      }
     case 'PLAYER_TRANSACTION':
       const foundIndex = isItemMatching(state.stash, action.transactionData)
       if (action.transactionType == "Buy") {
@@ -110,6 +116,11 @@ export const playerReducer = (state = initialState.currentPlayer, action) => {
 
 export const travelReducer = (state = initialState.gameData, action) => {
   switch (action.type) {
+    case 'NEW_GAME':
+      return {
+        ...state,
+        daysRemaining: 30
+      }
     case 'SET_CITY':
       return {
         ...state,
