@@ -14,6 +14,7 @@ export class Main extends React.Component {
 
     this.beginTravel = this.beginTravel.bind(this);
     this.callModal = this.callModal.bind(this);
+    this.newGame = this.newGame.bind(this);
 
     const newProducts = ProductAPI.randomizeData(this.props.products)
     this.props.updateProducts(newProducts)
@@ -31,6 +32,10 @@ export class Main extends React.Component {
     this.props.setCity(city);
   }
 
+  newGame() {
+    console.log("we're starting a new game")
+  }
+
   render () {
     const checkDaysRemaining = () => {
       if (this.props.daysRemaining < 0) {
@@ -38,7 +43,7 @@ export class Main extends React.Component {
         return (
           <div className="d-flex align-items-center justify-content-center">
             <h3 className="text-center mt-4 mr-5">Game over</h3>
-            <button className="btn btn-success" style={{marginTop: '18px'}}>Start Over</button>
+            <button className="btn btn-success" style={{marginTop: '18px'}} onClick={this.newGame}>Start Over</button>
           </div>
         )
       } else {
