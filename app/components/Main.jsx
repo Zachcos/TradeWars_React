@@ -39,6 +39,11 @@ export class Main extends React.Component {
           <div className="row" style={{marginTop: 50}}>
             <CitySelector beginTravel={this.beginTravel} currentCity={this.props.currentCity} />
           </div>
+          <div className="row">
+            <div className="col-sm-4 offset-sm-4">
+              <h3 className="text-center mt-4">{this.props.daysRemaining} days remaining</h3>
+            </div>
+          </div>
         </div>
       </div>
     )
