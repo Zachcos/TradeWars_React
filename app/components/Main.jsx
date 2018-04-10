@@ -13,9 +13,16 @@ export class Main extends React.Component {
     super(props);
 
     this.beginTravel = this.beginTravel.bind(this);
+    this.callModal = this.callModal.bind(this);
 
     const newProducts = ProductAPI.randomizeData(this.props.products)
     this.props.updateProducts(newProducts)
+  }
+
+  callModal(msg) {
+    $("#modal-msg").html(msg)
+    $("#modal-label").html("Game Over")
+    $("#modal").modal();
   }
 
   beginTravel(city) {
@@ -27,6 +34,7 @@ export class Main extends React.Component {
   render () {
     const checkDaysRemaining = () => {
       if (this.props.daysRemaining === 0) {
+        this.callModal("The game is over!")
         return <h3 className="text-center mt-4">Game over</h3>
       } else {
         return <h3 className="text-center mt-4">{this.props.daysRemaining} days remaining</h3>
