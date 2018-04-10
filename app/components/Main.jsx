@@ -42,7 +42,7 @@ export class Main extends React.Component {
           <Modal />
           <div className="row">
             <CityView products={this.props.products} currentCity={this.props.currentCity} />
-            <PlayerView currentPlayer={this.props.currentPlayer} daysRemaining={this.props.daysRemaining} />
+            <PlayerView currentPlayer={this.props.currentPlayer} />
           </div>
           <div className="row" style={{marginTop: 50}}>
             <CitySelector beginTravel={this.beginTravel} currentCity={this.props.currentCity} />
