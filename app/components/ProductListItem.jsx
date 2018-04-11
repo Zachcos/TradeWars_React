@@ -19,9 +19,6 @@ export class ProductListItem extends React.Component {
 
   validateChars(e) {
     var key = e.keyCode ? e.keyCode : e.which;
-    console.log(key)
-
-
     if (key < 48 || key > 57) {
       e.preventDefault();
     }
