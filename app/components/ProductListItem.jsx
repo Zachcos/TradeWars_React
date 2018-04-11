@@ -72,7 +72,6 @@ export class ProductListItem extends React.Component {
       </div>
       <input type="text" className="form-control" onKeyPress={this.validateChars} ref={(quantField) => { this.quantField = quantField }} />
       <div className="input-group-append">
-        {/* <button className="btn btn-outline-secondary" type="button">Max.</button> */}
         <button className="btn btn-success" type="button" onClick={this.startTransaction}>Buy</button>
         <button className="btn btn-danger" type="button" onClick={this.startTransaction}>Sell</button>
       </div>
