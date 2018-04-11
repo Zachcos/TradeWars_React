@@ -33,6 +33,7 @@ export class Main extends React.Component {
   }
 
   newGame() {
+    $(".product-list button").prop("disabled", false)
     const newProducts = ProductAPI.randomizeData(this.props.products)
     this.props.updateProducts(newProducts)
     this.props.newGame();
@@ -41,6 +42,7 @@ export class Main extends React.Component {
   render () {
     const checkDaysRemaining = () => {
       if (this.props.daysRemaining < 0) {
+        $(".product-list button").prop("disabled", true)
         const finalScore = this.props.currentPlayer.funds;
         this.callModal(`<p>Your final score was: ${finalScore}</p>`)
         return (
