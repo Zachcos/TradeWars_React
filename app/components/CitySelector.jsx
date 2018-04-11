@@ -40,7 +40,7 @@ import React from 'react';
       }
 
       return (
-        <div className="col-sm-4 offset-sm-4">
+        <div>
           <div className="input-group">
             <div className="input-group-prepend">
               <label htmlFor="travelCitySelect" className="input-group-text">Location:</label>

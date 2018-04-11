@@ -42,13 +42,18 @@ export class Main extends React.Component {
         const finalScore = this.props.currentPlayer.funds;
         this.callModal(`<p>Your final score was: ${finalScore}</p>`)
         return (
-          <div className="d-flex align-items-center justify-content-center">
+          <div>
             <h3 className="text-center mt-4 mr-5">Game over</h3>
             <button className="btn btn-success" style={{marginTop: '18px'}} onClick={this.newGame}>Start Over</button>
           </div>
         )
       } else {
-        return <h3 className="text-center mt-4">{this.props.daysRemaining} days remaining</h3>
+        return (
+          <div className="col-sm-4 offset-sm-4">
+            <CitySelector beginTravel={this.beginTravel} currentCity={this.props.currentCity} />
+            <h3 className="text-center mt-4">{this.props.daysRemaining} days remaining</h3>
+          </div>
+        )
       }
     }
 
@@ -64,12 +69,7 @@ export class Main extends React.Component {
             <PlayerView currentPlayer={this.props.currentPlayer} />
           </div>
           <div className="row" style={{marginTop: 50}}>
-            <CitySelector beginTravel={this.beginTravel} currentCity={this.props.currentCity} />
-          </div>
-          <div className="row">
-            <div className="col-sm-4 offset-sm-4">
-              {checkDaysRemaining()}
-            </div>
+            {checkDaysRemaining()}
           </div>
         </div>
       </div>
