@@ -8,12 +8,23 @@ export class ProductListItem extends React.Component {
 
     this.startTransaction = this.startTransaction.bind(this);
     this.callError = this.callError.bind(this);
+    this.validateChars = this.validateChars.bind(this);
   }
 
   callError(msg) {
     $("#modal-msg").html(msg)
     $("#modal-label").html("Error")
     $("#modal").modal();
+  }
+
+  validateChars(e) {
+    var key = e.keyCode ? e.keyCode : e.which;
+    console.log(key)
+
+
+    if (key < 48 || key > 57) {
+      e.preventDefault();
+    }
   }
 
   startTransaction(event) {
@@ -62,7 +73,7 @@ export class ProductListItem extends React.Component {
         <span className="input-group-text" id="inputGroup-sizing-md">${product.price}</span>
         <span className="input-group-text" id="inputGroup-sizing-md">{product.quantityAvailable} avail.</span>
       </div>
-      <input type="text" className="form-control" ref={(quantField) => { this.quantField = quantField }} />
+      <input type="text" className="form-control" onKeyPress={this.validateChars} ref={(quantField) => { this.quantField = quantField }} />
       <div className="input-group-append">
         {/* <button className="btn btn-outline-secondary" type="button">Max.</button> */}
         <button className="btn btn-success" type="button" onClick={this.startTransaction}>Buy</button>
