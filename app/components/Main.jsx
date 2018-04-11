@@ -33,6 +33,8 @@ export class Main extends React.Component {
   }
 
   newGame() {
+    const newProducts = ProductAPI.randomizeData(this.props.products)
+    this.props.updateProducts(newProducts)
     this.props.newGame();
   }
 
