@@ -27,7 +27,7 @@ export default {
   ],
   currentPlayer: {
     name: "Dirk Spently",
-    funds: 10000,
+    funds: 2000,
     health: 100,
     att: 10,
     def: 10,
@@ -35,6 +35,6 @@ export default {
   },
   gameData: {
     currentCity: 'Silicon Valley',
-    daysRemaining: 1
+    daysRemaining: 30
   }
 }
