@@ -43,8 +43,13 @@ export class Main extends React.Component {
         this.callModal(`<p>Your final score was: ${finalScore}</p>`)
         return (
           <div className="col-sm-4 offset-sm-4 d-flex justify-content-around">
-            <h3>Game over</h3>
             <button className="btn btn-success" onClick={this.newGame}>Start Over</button>
+          </div>
+        )
+      } else if (this.props.daysRemaining === 0) {
+        return (
+          <div className="col-sm-4 offset-sm-4 d-flex justify-content-around">
+            <button type="button" className="btn btn-danger" onClick={() => this.beginTravel("Game Over")}>End Game</button>
           </div>
         )
       } else {
