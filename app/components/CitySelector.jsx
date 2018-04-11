@@ -4,7 +4,7 @@ import React from 'react';
     constructor(props) {
       super(props);
       this.state = {
-        selectedCity: 'Silicon Valley',
+        selectedCity: '',
         cities: ['Portland', 'Seattle', 'Denver', 'Austin', 'San Francisco', 'Silicon Valley', 'New York', 'Raleigh']
       }
 
@@ -19,6 +19,8 @@ import React from 'react';
     submitTravel(event) {
       event.preventDefault();
       this.props.beginTravel(this.state.selectedCity)
+
+      this.setState({selectedCity: ''})
     }
 
     render() {
@@ -28,6 +30,14 @@ import React from 'react';
           return <option key={city} value={city}>{city}</option>
         })
       }
+      
+      const buttonToggle = () => {
+        if (this.state.selectedCity === '') {
+          $('#travel-btn').prop('disabled', true)
+        } else {
+          $('#travel-btn').prop('disabled', false)
+        }
+      }
 
       return (
         <div className="col-sm-4 offset-sm-4">
@@ -36,10 +46,12 @@ import React from 'react';
               <label htmlFor="travelCitySelect" className="input-group-text">Location:</label>
             </div>
             <select name="travelCitySelect" id="travelCitySelect" className="custom-select" onChange={this.handleChange}>
+              <option value="">Choose...</option>
               {listCities()}
             </select>
             <div className="input-group-append">
-              <button className="btn btn-primary" onClick={this.submitTravel}>Travel</button>
+              {buttonToggle()}
+              <button id="travel-btn" type="button" className="btn btn-primary" onClick={this.submitTravel}>Travel</button>
             </div>
           </div>
         </div>
