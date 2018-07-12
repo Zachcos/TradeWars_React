@@ -1,8 +1,13 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import { timingSafeEqual } from 'crypto';
 export class LoanShark extends React.Component {
   constructor(props) {
     super(props)
+
+    this.state = {
+      amountFieldValue: 0
+    }
 
     this.validateChars = this.validateChars.bind(this);
   }
