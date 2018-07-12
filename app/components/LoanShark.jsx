@@ -2,10 +2,18 @@ import React from 'react';
 
 const LoanShark = ({currentPlayer}) => {
   return (
-    <div className="col-sm-8 offset-sm-2">
-      <h2>Loan Shark</h2>
-      <br />
-      <p>You are ${currentPlayer.debt} in debt.</p>
+    <div className="col-sm-4 offset-sm-1 mt-5">
+      <h2 style={{marginBottom: 25}}>Loan Shark</h2>
+      <div className="input-group">
+        <div className="input-group-prepend">
+          <span className="input-group-text">${currentPlayer.debt} in debt</span>
+        </div>
+        <input type="text" placeholder="Enter amount" className="form-control" />
+        <div className="input-group-append">
+          <button className="btn btn-success" type="button">Pay back</button>
+          <button className="btn btn-danger" type="button">Take out</button>
+        </div>
+      </div>
     </div>
   )
 }
