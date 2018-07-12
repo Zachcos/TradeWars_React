@@ -34,4 +34,11 @@ export class LoanShark extends React.Component {
     )
   }
 }
-export default connect((state => state))(LoanShark);
+
+function mapStateToProps(state) {
+  return {
+    currentPlayer: state.currentPlayer
+  }
+}
+
+export default connect(mapStateToProps)(LoanShark);
