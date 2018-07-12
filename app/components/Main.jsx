@@ -67,6 +67,14 @@ export class Main extends React.Component {
       }
     }
 
+    const checkForShark = () => {
+      if (this.props.currentCity === "Raleigh") {
+        return <LoanShark />
+      } else {
+        return
+      }
+    }
+
     return (
       <div>
         <nav id="main-nav" className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -82,7 +90,7 @@ export class Main extends React.Component {
             {checkDaysRemaining()}
           </div>
           <div className="row">
-            <LoanShark />
+            {checkForShark()}
           </div>
         </div>
       </div>
