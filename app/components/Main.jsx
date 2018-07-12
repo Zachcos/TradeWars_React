@@ -69,7 +69,7 @@ export class Main extends React.Component {
 
     const checkForShark = () => {
       if (this.props.currentCity === "Raleigh") {
-        return <LoanShark currentPlayer={this.props.currentPlayer} />
+        return <LoanShark />
       } else {
         return
       }
