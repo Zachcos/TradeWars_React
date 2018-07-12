@@ -28,6 +28,7 @@ export default {
   currentPlayer: {
     name: "Dirk Spently",
     funds: 2000,
+    debt: 2000,
     health: 100,
     att: 10,
     def: 10,
