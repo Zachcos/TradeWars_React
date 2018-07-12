@@ -5,6 +5,7 @@ import PlayerView from 'PlayerView';
 import CitySelector from 'CitySelector';
 import ProductAPI from '../api/ProductAPI';
 import Modal from 'Modal';
+import LoanShark from 'LoanShark';
 
 import { updateProducts, setCity, newGame } from '../actions/actions';
 
@@ -79,6 +80,9 @@ export class Main extends React.Component {
           </div>
           <div className="row" style={{marginTop: 50}}>
             {checkDaysRemaining()}
+          </div>
+          <div className="row">
+            <LoanShark />
           </div>
         </div>
       </div>
