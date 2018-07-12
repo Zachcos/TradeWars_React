@@ -21,6 +21,7 @@ const PlayerView = ({ currentPlayer }) => {
           <h4>Player info</h4>
           <ul className="player-info list-unstyled">
             <li>Funds: ${currentPlayer.funds}</li>
+            <li>Debt: ${currentPlayer.debt}</li>
             <li>Health: {currentPlayer.health}</li>
             <li>Attack: {currentPlayer.att}</li>
             <li>Defense: {currentPlayer.def}</li>
