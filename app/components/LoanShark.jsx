@@ -1,6 +1,5 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import { timingSafeEqual } from 'crypto';
 export class LoanShark extends React.Component {
   constructor(props) {
     super(props)
