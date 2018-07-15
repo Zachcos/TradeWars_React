@@ -135,7 +135,7 @@ export const gameDataReducer = (state = initialState.gameData, action) => {
     case 'NEW_GAME':
       return {
         ...state,
-        daysRemaining: 2,
+        daysRemaining: 30,
         currentCity: "Silicon Valley"
       }
     case 'SET_CITY':
