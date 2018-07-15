@@ -9,6 +9,7 @@ export class LoanShark extends React.Component {
     }
 
     this.validateChars = this.validateChars.bind(this);
+    this.amountState = this.amountState.bind(this);
   }
   
   validateChars(e) {
@@ -16,6 +17,10 @@ export class LoanShark extends React.Component {
     if (key < 48 || key > 57) {
       e.preventDefault();
     }
+  }
+
+  amountState(e) {
+    this.setState({amountFieldValue: this.amountField.value * 1})
   }
   
   render () {
@@ -28,7 +33,7 @@ export class LoanShark extends React.Component {
           <div className="input-group-prepend">
             <span className="input-group-text">${currentPlayer.debt} in debt</span>
           </div>
-          <input type="text" placeholder="Enter amount" className="form-control" onKeyPress={this.validateChars}/>
+          <input type="text" placeholder="Enter amount" className="form-control" onKeyPress={this.validateChars} onChange={this.amountState} ref={(amountField) => { this.amountField = amountField }} />
           <div className="input-group-append">
             <button className="btn btn-success" type="button">Pay back</button>
             <button className="btn btn-danger" type="button">Take out</button>
