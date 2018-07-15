@@ -24,6 +24,11 @@ export class LoanShark extends React.Component {
     e.preventDefault();
     this.setState({amountFieldValue: 0})
     const { currentPlayer } = this.props;
+    const transactionType = e.target.innerHTML
+
+    const transactionData = {
+      amount: this.amountField.value * 1
+    }
 
     if (this.amountField.value > currentPlayer.funds) {
       console.log("You don't have enough money")
