@@ -44,7 +44,7 @@ export class LoanShark extends React.Component {
     }
 
     if (transactionType === "Take out") {
-      if (this.amountField.value + currentPlayer.debt > 5000) {
+      if ((this.amountField.value * 1) + currentPlayer.debt > 5000) {
         console.log("You can't have more than $5000 in loans at one time!")
       } else {
         this.props.loanTransaction(transactionData, transactionType)
