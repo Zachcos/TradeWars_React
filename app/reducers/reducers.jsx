@@ -1,5 +1,4 @@
 import initialState from './initialState';
-import { updateProducts } from '../actions/actions';
 
 export const productsReducer = (state = initialState.products, action) => {
   function isItemMatching(products, transactionData) {
