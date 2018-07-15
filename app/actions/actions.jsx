@@ -21,6 +21,14 @@ export const playerTransaction = (transactionData, transactionType) => {
   }
 }
 
+export const loanTransaction = (transactionData, transactionType) => {
+  return {
+    type:'LOAN_TRANSACTION',
+    transactionData,
+    transactionType
+  }
+}
+
 export const setCity = (city) => {
   return {
     type: 'SET_CITY',
