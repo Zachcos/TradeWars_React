@@ -12,6 +12,7 @@ export class LoanShark extends React.Component {
     this.validateChars = this.validateChars.bind(this);
     this.amountState = this.amountState.bind(this);
     this.startLoanTransaction = this.startLoanTransaction.bind(this);
+    this.callError = this.callError.bind(this);
   }
   
   validateChars(e) {
@@ -19,6 +20,12 @@ export class LoanShark extends React.Component {
     if (key < 48 || key > 57) {
       e.preventDefault();
     }
+  }
+
+  callError(msg) {
+    $("#modal-msg").html(msg)
+    $("#modal-label").html("Error")
+    $("#modal").modal();
   }
 
   startLoanTransaction(e) {
@@ -33,9 +40,9 @@ export class LoanShark extends React.Component {
 
     if (transactionType === "Pay back") {
       if (this.amountField.value > currentPlayer.funds) {
-        console.log("You don't have enough money")
+        this.callError("You don't have enough money")
       } else if (this.amountField.value > currentPlayer.debt) {
-        console.log("That's more debt than you have to your name!")
+        this.callError("That's more debt than you have to your name!")
       } else {
         this.props.loanTransaction(transactionData, transactionType)
       }
@@ -45,7 +52,7 @@ export class LoanShark extends React.Component {
 
     if (transactionType === "Take out") {
       if ((this.amountField.value * 1) + currentPlayer.debt > 5000) {
-        console.log("You can't have more than $5000 in loans at one time!")
+        this.callError("You can't have more than $5000 in loans at one time!")
       } else {
         this.props.loanTransaction(transactionData, transactionType)
       }
