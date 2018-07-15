@@ -44,7 +44,7 @@ export class Main extends React.Component {
     const checkDaysRemaining = () => {
       if (this.props.daysRemaining < 0) {
         $(".product-list button").prop("disabled", true)
-        const finalScore = this.props.currentPlayer.funds;
+        const finalScore = this.props.currentPlayer.funds - this.props.currentPlayer.debt;
         this.callModal(`<p>Your final score was: ${finalScore}</p>`)
         return (
           <div className="col-sm-4 offset-sm-4 d-flex justify-content-around">
