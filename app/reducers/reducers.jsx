@@ -45,7 +45,8 @@ export const playerReducer = (state = initialState.currentPlayer, action) => {
     case 'NEW_GAME':
       return {
         ...state,
-        funds: 10000,
+        funds: 2000,
+        debt: 2000,
         stash: []
       }
     case 'PLAYER_TRANSACTION':
@@ -134,7 +135,7 @@ export const gameDataReducer = (state = initialState.gameData, action) => {
     case 'NEW_GAME':
       return {
         ...state,
-        daysRemaining: 30,
+        daysRemaining: 2,
         currentCity: "Silicon Valley"
       }
     case 'SET_CITY':
