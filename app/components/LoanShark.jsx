@@ -30,12 +30,14 @@ export class LoanShark extends React.Component {
       amount: this.amountField.value * 1
     }
 
-    if (this.amountField.value > currentPlayer.funds) {
-      console.log("You don't have enough money")
-    } else if (this.amountField.value > currentPlayer.debt) {
-      console.log("That's more debt than you have to your name!")
-    } else {
-      console.log(`You paid ${this.amountField.value} towards your loan`)
+    if (transactionType === "Pay back") {
+      if (this.amountField.value > currentPlayer.funds) {
+        console.log("You don't have enough money")
+      } else if (this.amountField.value > currentPlayer.debt) {
+        console.log("That's more debt than you have to your name!")
+      } else {
+        console.log(`You paid ${this.amountField.value} towards your loan`)
+      }
     }
 
   }
