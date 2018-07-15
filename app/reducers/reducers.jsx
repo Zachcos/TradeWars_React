@@ -109,6 +109,14 @@ export const playerReducer = (state = initialState.currentPlayer, action) => {
           }
         }
       }
+    case 'LOAN_TRANSACTION':
+      if (action.transactionType === "Pay back") {
+        return {
+          ...state,
+          funds: state.funds - action.transactionData.amount,
+          debt: state.debt - action.transactionData.amount
+        }
+      }
     default:
       return state;
   }
