@@ -117,6 +117,14 @@ export const playerReducer = (state = initialState.currentPlayer, action) => {
           debt: state.debt - action.transactionData.amount
         }
       }
+
+      if (action.transactionType === "Take out") {
+        return {
+          ...state,
+          funds: state.funds + action.transactionData.amount,
+          debt: state.debt + action.transactionData.amount
+        }
+      }
     default:
       return state;
   }
