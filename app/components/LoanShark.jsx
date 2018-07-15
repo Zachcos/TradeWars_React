@@ -37,8 +37,10 @@ export class LoanShark extends React.Component {
       } else if (this.amountField.value > currentPlayer.debt) {
         console.log("That's more debt than you have to your name!")
       } else {
-        console.log(`You paid ${this.amountField.value} towards your loan`)
+        this.props.loanTransaction(transactionData, transactionType)
       }
+
+      this.amountField.value = ''
     }
 
   }
@@ -74,4 +76,6 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps)(LoanShark);
+const actions = { loanTransaction };
+
+export default connect(mapStateToProps, actions)(LoanShark);
