@@ -43,6 +43,14 @@ export class LoanShark extends React.Component {
       this.amountField.value = ''
     }
 
+    if (transactionType === "Take out") {
+      if (this.amountField.value + currentPlayer.debt > 5000) {
+        console.log("You can't have more than $5000 in loans at one time!")
+      } else {
+        this.props.loanTransaction(transactionData, transactionType)
+      }
+    }
+
   }
 
   amountState(e) {
@@ -62,7 +70,7 @@ export class LoanShark extends React.Component {
           <input type="text" placeholder="Enter amount" className="form-control" onKeyPress={this.validateChars} onChange={this.amountState} ref={(amountField) => { this.amountField = amountField }} />
           <div className="input-group-append">
             <button className="btn btn-success" type="button" onClick={this.startLoanTransaction}>Pay back</button>
-            <button className="btn btn-danger" type="button">Take out</button>
+            <button className="btn btn-danger" type="button" onClick={this.startLoanTransaction}>Take out</button>
           </div>
         </div>
       </div>
