@@ -35,6 +35,7 @@ export default {
     stash: []
   },
   gameData: {
+    cities: ['Portland', 'Seattle', 'Denver', 'Austin', 'San Francisco', 'Silicon Valley', 'New York', 'Raleigh'],
     currentCity: 'Silicon Valley',
     loanSharkCity: 'Raleigh',
     daysRemaining: 30

@@ -60,7 +60,7 @@ export class Main extends React.Component {
       } else {
         return (
           <div className="col-sm-4 offset-sm-4">
-            <CitySelector beginTravel={this.beginTravel} currentCity={this.props.currentCity} />
+            <CitySelector beginTravel={this.beginTravel} currentCity={this.props.currentCity} cities={this.props.cities} />
             <h3 className="text-center mt-4">{this.props.daysRemaining} days remaining</h3>
           </div>
         )
@@ -102,6 +102,7 @@ function mapStateToProps(state, ownProps) {
   return {
     products: state.products,
     currentPlayer: state.currentPlayer,
+    cities: state.gameData.cities,
     currentCity: state.gameData.currentCity,
     loanSharkCity: state.gameData.loanSharkCity,
     daysRemaining: state.gameData.daysRemaining

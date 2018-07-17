@@ -4,8 +4,7 @@ import React from 'react';
     constructor(props) {
       super(props);
       this.state = {
-        selectedCity: '',
-        cities: ['Portland', 'Seattle', 'Denver', 'Austin', 'San Francisco', 'Silicon Valley', 'New York', 'Raleigh']
+        selectedCity: ''
       }
 
       this.handleChange = this.handleChange.bind(this);
@@ -25,7 +24,7 @@ import React from 'react';
 
     render() {
       const listCities = () => {
-        const myCities = this.state.cities.filter(city => city != this.props.currentCity);
+        const myCities = this.props.cities.filter(city => city != this.props.currentCity);
         return myCities.map(city => {
           return <option key={city} value={city}>{city}</option>
         })
