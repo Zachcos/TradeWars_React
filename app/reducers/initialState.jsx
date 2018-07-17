@@ -36,6 +36,7 @@ export default {
   },
   gameData: {
     currentCity: 'Silicon Valley',
+    loanSharkCity: 'Raleigh',
     daysRemaining: 30
   }
 }
