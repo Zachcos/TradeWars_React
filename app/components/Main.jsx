@@ -68,7 +68,7 @@ export class Main extends React.Component {
     }
 
     const checkForShark = () => {
-      if (this.props.currentCity === "Raleigh") {
+      if (this.props.currentCity === this.props.loanSharkCity) {
         return <LoanShark />
       } else {
         return
@@ -103,6 +103,7 @@ function mapStateToProps(state, ownProps) {
     products: state.products,
     currentPlayer: state.currentPlayer,
     currentCity: state.gameData.currentCity,
+    loanSharkCity: state.gameData.loanSharkCity,
     daysRemaining: state.gameData.daysRemaining
   }
 }
