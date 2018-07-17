@@ -26,7 +26,11 @@ import React from 'react';
       const listCities = () => {
         const myCities = this.props.cities.filter(city => city != this.props.currentCity);
         return myCities.map(city => {
-          return <option key={city} value={city}>{city}</option>
+          if (city === this.props.loanSharkCity) {
+            return <option key={city} value={city}>{city} (Loan Shark)</option>  
+          } else {
+            return <option key={city} value={city}>{city}</option>
+          }
         })
       }
       
