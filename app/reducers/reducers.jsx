@@ -135,6 +135,7 @@ export const gameDataReducer = (state = initialState.gameData, action) => {
     case 'NEW_GAME':
       return {
         ...state,
+        loanSharkCity: acting.initialState.gameData.cities[Math.floor(Math.random()* cities.length)],
         daysRemaining: 30,
         currentCity: "Silicon Valley"
       }
