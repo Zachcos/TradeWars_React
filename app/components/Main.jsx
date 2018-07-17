@@ -60,7 +60,7 @@ export class Main extends React.Component {
       } else {
         return (
           <div className="col-sm-4 offset-sm-4">
-            <CitySelector beginTravel={this.beginTravel} currentCity={this.props.currentCity} cities={this.props.cities} />
+            <CitySelector beginTravel={this.beginTravel} currentCity={this.props.currentCity} cities={this.props.cities} loanSharkCity={this.props.loanSharkCity} />
             <h3 className="text-center mt-4">{this.props.daysRemaining} days remaining</h3>
           </div>
         )
