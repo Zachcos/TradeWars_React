@@ -39,7 +39,9 @@ export class LoanShark extends React.Component {
     }
 
     if (transactionType === "Pay back") {
-      if (this.amountField.value > currentPlayer.funds) {
+      if (this.state.amountFieldValue === 0) {
+        return;
+      } else if (this.amountField.value > currentPlayer.funds) {
         this.callError("You don't have enough money")
       } else if (this.amountField.value > currentPlayer.debt) {
         this.callError("That's more debt than you have to your name!")
@@ -51,7 +53,9 @@ export class LoanShark extends React.Component {
     }
 
     if (transactionType === "Take out") {
-      if ((this.amountField.value * 1) + currentPlayer.debt > 5000) {
+      if (this.state.amountFieldValue === 0) {
+        return;
+      } else if ((this.amountField.value * 1) + currentPlayer.debt > 5000) {
         this.callError("You can't have more than $5000 in loans at one time!")
       } else {
         this.props.loanTransaction(transactionData, transactionType)
